@@ -29,6 +29,7 @@ struct HomeView: View {
                         Text("Gösterilecek Öğe Bulunamadı")
                     }
                 }
+                .padding()
                 .frame(maxWidth: .infinity)
             }
             .background(.red)
