@@ -13,4 +13,5 @@ struct HabitModel: Identifiable, Hashable {
     var description: String
     var date: String
     var color: Color
+    var icon: String
 }

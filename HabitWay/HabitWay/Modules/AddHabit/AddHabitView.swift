@@ -37,7 +37,7 @@ struct AddHabitView: View {
                                 name: nameTextField,
                                 description: descriptionTextField,
                                 date: "",
-                                color: color
+                                color: color, icon: icon
                             ))
                         }
                         .disabled(isValidation)

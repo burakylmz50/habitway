@@ -19,7 +19,7 @@ public struct GrassView: View {
     
     private let formatString: String
     private let formatter = DateFormatter()
-    private let today = Date()
+    private let date = Date()
     private let calendar = Calendar.current
     
     @StateObject var viewModel = GrassViewModel()
@@ -27,7 +27,7 @@ public struct GrassView: View {
     public init (
         _ data:[String: Int] = [:],
         row: Int = 5, col: Int = 15,
-        cellColor: Color = .green,
+        cellColor: Color = .gray,
         cellSpacing: CGFloat = 2,
         formatString: String = "yyyy-MM-dd",
         locale: Locale = Locale(identifier: Locale.current.identifier),
@@ -36,7 +36,7 @@ public struct GrassView: View {
     ) {
         self.data = data
         self.row = row
-        self.col = 2
+        self.col = col
         self.cellColor = cellColor
         self.cellSpacing = cellSpacing
         self.formatString = formatString
@@ -88,8 +88,8 @@ public struct GrassView: View {
     }
     
     func getDate(rowcol:[Int]) -> String {
-        let diff = -1 * ( (row - rowcol[0] - 1) + (col - rowcol[1] - 1) * row )
-        let date = calendar.date(byAdding: .day, value: diff, to: self.today) ?? self.today
+        let diff = (-1 * ( (row - rowcol[0] - 1) + (col - rowcol[1] - 1) * row ) + date.dayNumberOfWeek() - calendar.firstWeekday)
+        let date = calendar.date(byAdding: .day, value: diff, to: self.date) ?? self.date
         let dateString = formatter.string(from: date)
         return dateString
     }

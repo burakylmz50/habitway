@@ -16,15 +16,22 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
-            ScrollView {
-                ForEach($viewModel.habits, id: \.id) { $habit in
-                    HomeGrassView(habitModel: habit, action: {
-                        // let asdas = print(habit)
-                    })
-                    
-                    Spacer(minLength: 20)
+            ScrollView(.vertical) {
+                VStack {
+                    if !$viewModel.habits.isEmpty {
+                        ForEach($viewModel.habits, id: \.id) { $habit in
+                            HomeGrassView(habitModel: habit, action: {
+                                let asdas = print(habit)
+                            })
+                            Spacer(minLength: 20)
+                        }
+                    } else {
+                        Text("Gösterilecek Öğe Bulunamadı")
+                    }
                 }
+                .frame(maxWidth: .infinity)
             }
+            .background(.red)
             .toolbarTitleDisplayMode(.large)
             .navigationTitle("Habit's")
             .toolbar {
@@ -58,7 +65,7 @@ extension HomeView {
         var action: (() -> Void)?
         
         var body: some View {
-            HabitView(habitModel: HabitModel(id: .init(), name: "name", description: "description", date: "date", color: .red)) {
+            HabitView(habitModel: habitModel) {
                 action?()
             }
         }

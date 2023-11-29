@@ -46,6 +46,7 @@ final class DataController: ObservableObject {
         habit.name = model.name
         habit.desc = model.description
         habit.date = model.date
+        habit.icon = model.icon
         
         save(context: context)
     }
@@ -54,6 +55,7 @@ final class DataController: ObservableObject {
         habit.name = model.name
         habit.desc = model.description
         habit.date = model.date
+        habit.icon = model.icon
         
         save(context: context)
     }
@@ -74,7 +76,8 @@ final class DataController: ObservableObject {
                     name: $0.name ?? "",
                     description: $0.description ,
                     date: $0.date ?? "",
-                    color: Color($0.color ?? "")
+                    color: Color($0.color ?? ""),
+                    icon: $0.icon ?? ""
                 )
             }
             

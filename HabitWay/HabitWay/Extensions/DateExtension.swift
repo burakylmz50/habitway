@@ -37,4 +37,9 @@ extension Date {
     var weekdayOrdinal: Int {
         return Calendar.current.component(.weekday, from: self)
     }
+    
+    func dayNumberOfWeek() -> Int {
+        var myCalendar = Calendar.current
+        return myCalendar.dateComponents([.weekday], from: self).weekday!
+    }
 }

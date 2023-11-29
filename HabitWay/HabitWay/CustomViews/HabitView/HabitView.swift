@@ -35,10 +35,12 @@ struct HabitView: View {
                     .padding([.leading], 5)
                     
                     VStack(alignment: .leading) {
-                        Text("habitModel.namehabithabitModel.nameModel.namehabitModel.namehabitModel.name")
-                            .background(.red)
-                        Text("habitModel.deshabitModel.namehabitModel.namehabitModel.namehabitModel.namecription")
-                            .background(.red)
+                        Text(habitModel.name)
+                            .font(.subheadline)
+                            .foregroundStyle(.gray)
+                        Text(habitModel.description)
+                            .font(.caption2)
+                            .foregroundStyle(.gray)
                     }
                     .padding([.top, .bottom], 5)
                     
@@ -48,7 +50,7 @@ struct HabitView: View {
                         action?()
                     }, label: {
                         ZStack {
-                            RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .continuous)
+                            RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .circular)
                                 .fill(.gray)
                                 .frame(width: 30, height: 30)
                             
@@ -71,5 +73,5 @@ struct HabitView: View {
 
 
 #Preview {
-    HabitView(habitModel: HabitModel(id: .init(), name: "name", description: "description", date: "date", color: .red))
+    HabitView(habitModel: HabitModel(id: .init(), name: "name", description: "description", date: "date", color: .red, icon: "plus.circle.fill"))
 }

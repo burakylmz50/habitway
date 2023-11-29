@@ -42,19 +42,18 @@ struct GrassViewCell: View {
                 onCellTouch(date, level)
             }
             .onTapGesture(count: 1) {
-                let dasda = print(date)
+                print(date)
                 onCellTouch(date, level)
             }
         }
     }
     
     private func setFillColor(date: String, level: Int) -> Color {
-        if date.toDate(withFormat: "yyyy-MM-dd")! > Date.now {
-//            let asda = print("12312")
+        if date.toDate(withFormat: "yyyy-MM-dd")! >= Date.now {
+            return .clear
             
         } else {
-//            let asda = print("asdasd")
+            return cellColor
         }
-        return .red
     }
 }
