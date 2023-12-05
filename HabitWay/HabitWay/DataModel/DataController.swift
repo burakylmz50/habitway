@@ -43,8 +43,8 @@ final class DataController: ObservableObject {
     func addHabit(model: HabitModel) {
         let habit = HabitEntity(context: context)
         habit.id = UUID()
-        habit.name = model.name
-        habit.desc = model.description
+        habit.title = model.title
+        habit.subtitle = model.subtitle
         habit.date = model.date
         habit.icon = model.icon
         
@@ -52,8 +52,8 @@ final class DataController: ObservableObject {
     }
     
     func editHabit(habit: HabitEntity, model: HabitModel) {
-        habit.name = model.name
-        habit.desc = model.description
+        habit.title = model.title
+        habit.subtitle = model.subtitle
         habit.date = model.date
         habit.icon = model.icon
         
@@ -73,8 +73,8 @@ final class DataController: ObservableObject {
             habits = try context.fetch(request).map {
                 HabitModel(
                     id: $0.id ?? UUID(),
-                    name: $0.name ?? "",
-                    description: $0.description ,
+                    title: $0.title ?? "",
+                    subtitle: $0.subtitle ?? "" ,
                     date: $0.date ?? "",
                     color: Color($0.color ?? ""),
                     icon: $0.icon ?? ""

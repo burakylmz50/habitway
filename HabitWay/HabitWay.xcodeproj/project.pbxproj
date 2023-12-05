@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */; };
+		65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */; };
+		65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */; };
 		65EB841F2B0BA20B000D5495 /* HabitWayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB841E2B0BA20B000D5495 /* HabitWayApp.swift */; };
 		65EB84212B0BA20B000D5495 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84202B0BA20B000D5495 /* HomeView.swift */; };
 		65EB84232B0BA20D000D5495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65EB84222B0BA20D000D5495 /* Assets.xcassets */; };
@@ -31,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
+		65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		65A8EA882B1BD81F00FB3C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		65EB841B2B0BA20B000D5495 /* HabitWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EB841E2B0BA20B000D5495 /* HabitWayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWayApp.swift; sourceTree = "<group>"; };
 		65EB84202B0BA20B000D5495 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -64,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65A8EA892B1BDB7600FB3C65 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
 		65EB84122B0BA20B000D5495 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +96,7 @@
 		65EB841D2B0BA20B000D5495 /* HabitWay */ = {
 			isa = PBXGroup;
 			children = (
+				65A8EA882B1BD81F00FB3C65 /* Info.plist */,
 				65EB84532B1146E8000D5495 /* DataModel */,
 				65EB844A2B0E8C7C000D5495 /* ReusableViews */,
 				65EB84362B0BA35A000D5495 /* CustomViews */,
@@ -122,6 +136,7 @@
 		65EB842E2B0BA25B000D5495 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				65A8EA892B1BDB7600FB3C65 /* LaunchScreen */,
 				65EB84402B0CEE4C000D5495 /* Container */,
 				65EB843C2B0C05E0000D5495 /* Home */,
 				65EB84622B128758000D5495 /* AddHabit */,
@@ -135,6 +150,7 @@
 				65EB84322B0BA2AD000D5495 /* StringExtension.swift */,
 				65EB84342B0BA2D3000D5495 /* DateExtension.swift */,
 				65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */,
+				65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -297,6 +313,7 @@
 				65EB84682B128785000D5495 /* HabitModel.swift in Sources */,
 				65EB84332B0BA2AD000D5495 /* StringExtension.swift in Sources */,
 				65EB84662B128778000D5495 /* AddHabitViewModel.swift in Sources */,
+				65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */,
 				65EB84522B1146DC000D5495 /* HabitModel.xcdatamodeld in Sources */,
 				65EB843B2B0C05B0000D5495 /* GrassViewCell.swift in Sources */,
 				65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */,
@@ -304,6 +321,7 @@
 				65EB84212B0BA20B000D5495 /* HomeView.swift in Sources */,
 				65EB84422B0CEE5A000D5495 /* ContainerView.swift in Sources */,
 				65EB84442B0CEE61000D5495 /* ContainerViewModel.swift in Sources */,
+				65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */,
 				65EB84652B128778000D5495 /* AddHabitView.swift in Sources */,
 				65EB84552B114A5E000D5495 /* DataController.swift in Sources */,
 				65EB84302B0BA26F000D5495 /* HomeViewModel.swift in Sources */,
@@ -447,9 +465,9 @@
 				DEVELOPMENT_TEAM = RGQUXDWRS8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HabitWay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -477,9 +495,9 @@
 				DEVELOPMENT_TEAM = RGQUXDWRS8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HabitWay/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

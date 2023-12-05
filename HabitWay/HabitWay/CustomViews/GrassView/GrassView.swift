@@ -36,7 +36,7 @@ public struct GrassView: View {
     ) {
         self.data = data
         self.row = row
-        self.col = col
+        self.col = 3
         self.cellColor = cellColor
         self.cellSpacing = cellSpacing
         self.formatString = formatString
@@ -88,7 +88,8 @@ public struct GrassView: View {
     }
     
     func getDate(rowcol:[Int]) -> String {
-        let diff = (-1 * ( (row - rowcol[0] - 1) + (col - rowcol[1] - 1) * row ) + date.dayNumberOfWeek() - calendar.firstWeekday)
+        let asda =  (7 - date.dayNumberOfWeek()! + calendar.firstWeekday - 1) % 7
+        let diff = -1 * ( (row - rowcol[0] - 1) + (col - rowcol[1] - 1) * row ) + asda
         let date = calendar.date(byAdding: .day, value: diff, to: self.date) ?? self.date
         let dateString = formatter.string(from: date)
         return dateString

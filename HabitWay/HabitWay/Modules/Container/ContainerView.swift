@@ -9,14 +9,19 @@ import SwiftUI
 
 struct ContainerView: View {
     
+    @State private var isLaunchScreenViewPresented = true
     @StateObject var viewModel = ContainerViewModel()
 
     let dataController = DataController.shared
     
     var body: some View {
-        NavigationStack(path: $viewModel.navigationPath) {
-            HomeView(viewModel: viewModel.homeViewModel)
-                .environment(\.managedObjectContext, dataController.container.viewContext)
+        if !isLaunchScreenViewPresented {
+            NavigationStack(path: $viewModel.navigationPath) {
+                HomeView(viewModel: viewModel.homeViewModel)
+                    .environment(\.managedObjectContext, dataController.container.viewContext)
+            }
+        } else {
+                LaunchScreen(isPresented: $isLaunchScreenViewPresented)
         }
     }
 }

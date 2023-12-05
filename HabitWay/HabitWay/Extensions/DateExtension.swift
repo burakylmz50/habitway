@@ -15,7 +15,6 @@ extension Date {
         formatter.dateFormat = format
         let myString = formatter.string(from: self)
         let yourDate = formatter.date(from: myString)
-        formatter.dateFormat = format
         
         return formatter.string(from: yourDate!)
     }
@@ -38,8 +37,7 @@ extension Date {
         return Calendar.current.component(.weekday, from: self)
     }
     
-    func dayNumberOfWeek() -> Int {
-        var myCalendar = Calendar.current
-        return myCalendar.dateComponents([.weekday], from: self).weekday!
+    func dayNumberOfWeek() -> Int? {
+        Calendar.current.dateComponents([.weekday], from: self).weekday
     }
 }

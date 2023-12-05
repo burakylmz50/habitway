@@ -10,6 +10,7 @@ import SwiftUI
 struct InputView: View {
     
     @Binding var text: String
+    @FocusState private var textfieldFocused: Bool
     
     var title: String
     var placeholder: String
@@ -19,6 +20,11 @@ struct InputView: View {
             Text(title)
                 .modifier(InputTextLayout())
             TextField(placeholder, text: $text)
+                .focused($textfieldFocused)
+                .onLongPressGesture(minimumDuration: 0.0) {
+                    textfieldFocused = true
+                }
+                .autocorrectionDisabled()
                 .modifier(TextFieldLayout())
         }
     }

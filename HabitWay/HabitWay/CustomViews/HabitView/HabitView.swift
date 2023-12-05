@@ -25,7 +25,7 @@ struct HabitView: View {
                 HStack {
                     ZStack {
                         RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .circular)
-                            .fill(.gray)
+                            .fill(.gray.opacity(0.2))
                             .frame(width: 30, height: 30)
                         
                         Image(systemName: "plus.circle.fill")
@@ -35,10 +35,10 @@ struct HabitView: View {
                     .padding([.leading], 5)
                     
                     VStack(alignment: .leading) {
-                        Text(habitModel.name)
+                        Text(habitModel.title)
                             .font(.subheadline)
                             .foregroundStyle(.gray)
-                        Text(habitModel.description)
+                        Text(habitModel.subtitle)
                             .font(.caption2)
                             .foregroundStyle(.gray)
                     }
@@ -51,10 +51,10 @@ struct HabitView: View {
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .circular)
-                                .fill(.gray)
+                                .fill(.gray.opacity(0.2))
                                 .frame(width: 30, height: 30)
                             
-                            Image(systemName: "plus.circle.fill")
+                            Image(systemName: "checkmark")
                                 .resizable()
                                 .frame(width: 20, height: 20)
                         }
@@ -73,5 +73,5 @@ struct HabitView: View {
 
 
 #Preview {
-    HabitView(habitModel: HabitModel(id: .init(), name: "name", description: "description", date: "date", color: .red, icon: "plus.circle.fill"))
+    HabitView(habitModel: HabitModel(id: .init(), title: "name", subtitle: "description", date: "date", color: .red, icon: "plus.circle.fill"))
 }

@@ -18,7 +18,7 @@ struct AddHabitView: View {
     @State private var isAddHabitSelector: Bool = false
     @State private var nameTextField = ""
     @State private var descriptionTextField = ""
-
+    
     @State private var icon = "star.fill"
     @State private var isPresented = false
     
@@ -34,10 +34,11 @@ struct AddHabitView: View {
                             
                             viewModel.addHabit(model: .init(
                                 id: UUID(),
-                                name: nameTextField,
-                                description: descriptionTextField,
+                                title: nameTextField,
+                                subtitle: descriptionTextField,
                                 date: "",
-                                color: color, icon: icon
+                                color: color,
+                                icon: icon
                             ))
                         }
                         .disabled(isValidation)
@@ -46,7 +47,7 @@ struct AddHabitView: View {
                     VStack(spacing: 20) {
                         InputView(
                             text: $nameTextField,
-                            title: "Name*",
+                            title: "Name (Required)",
                             placeholder: "Reading books"
                         )
                         
@@ -92,10 +93,10 @@ struct AddHabitView: View {
         nameTextField.count < 3
     }
 }
-//
-//#Preview {
-//    AddHabitView(
-//        viewModel: AddHabitViewModel(),
-//        isPresentedAddHabitView: .constant(true), color: .constant(.red)
-//    )
-//}
+
+#Preview {
+    AddHabitView(
+        viewModel: AddHabitViewModel(),
+        isPresentedAddHabitView: .constant(true), color: .constant(.red)
+    )
+}

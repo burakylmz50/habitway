@@ -3,9 +3,9 @@
     <entity name="HabitEntity" representedClassName="HabitEntity" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="String" customClassName="NSColor"/>
         <attribute name="date" optional="YES" attributeType="String"/>
-        <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="subtitle" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
 </model>

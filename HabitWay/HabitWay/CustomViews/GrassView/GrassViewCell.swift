@@ -51,7 +51,6 @@ struct GrassViewCell: View {
     private func setFillColor(date: String, level: Int) -> Color {
         if date.toDate(withFormat: "yyyy-MM-dd")! >= Date.now {
             return .clear
-            
         } else {
             return cellColor
         }
