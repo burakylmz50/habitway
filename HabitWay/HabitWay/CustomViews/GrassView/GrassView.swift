@@ -36,7 +36,7 @@ public struct GrassView: View {
     ) {
         self.data = data
         self.row = row
-        self.col = 3
+        self.col = col
         self.cellColor = cellColor
         self.cellSpacing = cellSpacing
         self.formatString = formatString
