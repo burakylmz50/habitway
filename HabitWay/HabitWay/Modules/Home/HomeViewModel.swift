@@ -15,7 +15,7 @@ enum HomeRoute : String , Hashable{
 final class HomeViewModel: ObservableObject {
     
     @Environment(\.managedObjectContext) var managedObjContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var habit: FetchedResults<HabitEntity>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.isUpdated, order: .reverse)]) var habit: FetchedResults<HabitEntity>
     
     @Published var navigationPath = NavigationPath()
     @Published var habits = [HabitModel]()
@@ -33,9 +33,17 @@ final class HomeViewModel: ObservableObject {
     func getHabits() {
         habits = DataController.shared.getHabits()
     }
-        
+    
     func addButton() {
         navigationPath.append(HomeRoute.addHabit)
+    }
+    
+    func removeHabit(habitModel: HabitModel) {
+        DataController.shared.deleteEntityObjectByKeyValue(
+            entityName: HabitEntity.self,
+            key: "id",
+            value: habitModel.id
+        )
     }
 }
 

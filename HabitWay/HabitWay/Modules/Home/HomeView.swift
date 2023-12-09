@@ -26,7 +26,7 @@ struct HomeView: View {
                     Spacer()
                 }
                 .padding(.leading)
-                VStack {
+                LazyVStack {
                     if !$viewModel.habits.isEmpty {
                         ForEach($viewModel.habits, id: \.id) { $habit in
                             HomeGrassView(habitModel: habit, action: {
@@ -34,7 +34,7 @@ struct HomeView: View {
                             })
                             .contextMenu {
                                 Button {
-                                    print("Change country setting")
+                                    viewModel.removeHabit(habitModel: habit)
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }

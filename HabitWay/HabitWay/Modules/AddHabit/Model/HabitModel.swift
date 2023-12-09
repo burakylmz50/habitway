@@ -11,7 +11,7 @@ struct HabitModel: Identifiable, Hashable {
     var id = UUID()
     var title: String
     var subtitle: String
-    var date: String
+    var date: [String]
     var color: Color
     var icon: String
 }

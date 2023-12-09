@@ -52,7 +52,7 @@ struct GrassViewCell: View {
         if date.toDate(withFormat: "yyyy-MM-dd")! >= Date.now {
             return .clear
         } else {
-            return cellColor
+            return cellColor.opacity(Double(level) * 0.2 + 0.2)
         }
     }
 }

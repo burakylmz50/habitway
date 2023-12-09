@@ -19,6 +19,8 @@ struct AddHabitView: View {
     @State private var nameTextField = ""
     @State private var descriptionTextField = ""
     
+    @FocusState private var focusedField: String?
+    
     @State private var icon = "star.fill"
     @State private var isPresented = false
     
@@ -36,11 +38,12 @@ struct AddHabitView: View {
                                 id: UUID(),
                                 title: nameTextField,
                                 subtitle: descriptionTextField,
-                                date: "",
+                                date: [""],
                                 color: color,
                                 icon: icon
                             ))
                         }
+                        .tint(.brandColor)
                         .disabled(isValidation)
                     }
                     
@@ -50,6 +53,9 @@ struct AddHabitView: View {
                             title: "Name (Required)",
                             placeholder: "Reading books"
                         )
+                        .onAppear {
+                            focusedField = "nameTextField"
+                        }
                         
                         InputView(
                             text: $descriptionTextField,
@@ -57,9 +63,7 @@ struct AddHabitView: View {
                             placeholder: "Description"
                         )
                         
-                        ColorPicker("Select Color", selection: $color)
-                            .foregroundStyle(.gray)
-                            .font(.headline)
+                        SquareColorPickerView(colorValue: $color)
                         
                         HStack {
                             Text("Select Icon")
@@ -91,6 +95,24 @@ struct AddHabitView: View {
     
     var isValidation: Bool {
         nameTextField.count < 3
+    }
+}
+
+struct SquareColorPickerView: View {
+    
+    @Binding var colorValue: Color
+    
+    var body: some View {
+        
+        colorValue
+            .frame(width: 40, height: 40, alignment: .center)
+            .cornerRadius(10.0)
+            .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(Color.white, style: StrokeStyle(lineWidth: 5)))
+            .padding(10)
+            .background(AngularGradient(gradient: Gradient(colors: [.red,.yellow,.green,.blue,.purple,.pink]), center:.center).cornerRadius(20.0))
+            .overlay(ColorPicker("", selection: $colorValue).labelsHidden().opacity(0.015))
+            .shadow(radius: 5.0)
+        
     }
 }
 

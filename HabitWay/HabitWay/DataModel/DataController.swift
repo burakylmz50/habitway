@@ -34,7 +34,6 @@ final class DataController: ObservableObject {
             try context.save()
             print("Data saved successfully. WUHU!!!")
         } catch {
-            // Handle errors in our database
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
@@ -60,10 +59,38 @@ final class DataController: ObservableObject {
         save(context: context)
     }
     
+    func deleteEntityObjectByKeyValue<T>(entityName: T.Type, key: String, value: Any) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entityName.self))
+        if  let sValue = value as? String {
+            let predicate = NSPredicate(format: "\(key) == %@", sValue)
+            fetchRequest.predicate = predicate
+        } else if let iValue = value as? Int64 {
+            let predicate = NSPredicate(format: "\(key) == %d", iValue)
+            fetchRequest.predicate = predicate
+        }
+        do {
+            let result = try context.fetch(fetchRequest)
+            if result.count != 0 {
+                if let managedObject = result[0] as? NSManagedObject {
+                    context.delete(managedObject)
+                    do {
+                        try context.save()
+                    }
+                    catch let error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+    }
+    
     func deleteAll() {
-        let fetchRequest1: NSFetchRequest<NSFetchRequestResult> = HabitEntity.fetchRequest()
-        let batchDeleteRequest1 = NSBatchDeleteRequest(fetchRequest: fetchRequest1)
-        _ = try? container.viewContext.execute(batchDeleteRequest1)
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = HabitEntity.fetchRequest()
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        _ = try? container.viewContext.execute(batchDeleteRequest)
     }
     
     func getHabits() -> [HabitModel] {
@@ -75,7 +102,7 @@ final class DataController: ObservableObject {
                     id: $0.id ?? UUID(),
                     title: $0.title ?? "",
                     subtitle: $0.subtitle ?? "" ,
-                    date: $0.date ?? "",
+                    date: $0.date ?? [],
                     color: Color($0.color ?? ""),
                     icon: $0.icon ?? ""
                 )

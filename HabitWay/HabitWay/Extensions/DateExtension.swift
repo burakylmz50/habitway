@@ -21,10 +21,9 @@ extension Date {
     
     func getCurrentDate(withFormat format: String = "yyyy-MM-dd") -> Date {
         
-        let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
-        let dateInString  = dateFormatter.string(from: date)
+        let dateInString  = dateFormatter.string(from: self)
         let dateinDate = dateFormatter.date(from: dateInString)
         
         return dateinDate!

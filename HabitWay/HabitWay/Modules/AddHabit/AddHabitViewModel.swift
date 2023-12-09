@@ -17,8 +17,16 @@ final class AddHabitViewModel: ObservableObject {
 //    @Environment(\.managedObjectContext) var managedObjContext
     
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.date, order: .reverse)]) var habit: FetchedResults<HabitEntity>
-        
+//    @FetchRequest(sortDescriptors: [SortDescriptor(\., order: .reverse)]) 
+//    var habit: FetchedResults<HabitEntity>
+//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \HabitModel.date, ascending: true)], animation: .default)
+    
+    @FetchRequest(
+        sortDescriptors: [
+            SortDescriptor(\HabitEntity.id, order: .reverse)
+        ]
+    ) var users: FetchedResults<HabitEntity>
+    
     @Published var navigationPath = NavigationPath()
     
     init() { }
