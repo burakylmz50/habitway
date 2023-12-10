@@ -26,21 +26,31 @@ struct HomeView: View {
                     Spacer()
                 }
                 .padding(.leading)
-                LazyVStack {
+                VStack {
                     if !$viewModel.habits.isEmpty {
                         ForEach($viewModel.habits, id: \.id) { $habit in
                             HomeGrassView(habitModel: habit, action: {
-                                let asdas = print(habit)
+                                let _ = print(habit)
                             })
                             .contextMenu {
                                 Button {
-                                    viewModel.removeHabit(habitModel: habit)
+                                    print(habit)
+                                    DispatchQueue.main.async {
+                                    withAnimation {
+                                            if viewModel.removeHabit(habitModel: habit) {
+                                                // TODO: eleman silinince freeze meydana geliyor.
+                                                viewModel.getHabits()
+                                            }
+                                        }
+
+                                    }
                                 } label: {
                                     Label("Delete", systemImage: "trash")
                                 }
                             }
                             Spacer(minLength: 20)
                         }
+                        .id(UUID())
                     } else {
                         ContentUnavailableView()
                     }

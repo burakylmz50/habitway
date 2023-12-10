@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct HabitModel: Identifiable, Hashable {
+struct HabitModel: Identifiable, Equatable {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     var id = UUID()
     var title: String
     var subtitle: String

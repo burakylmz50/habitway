@@ -38,7 +38,7 @@ final class HomeViewModel: ObservableObject {
         navigationPath.append(HomeRoute.addHabit)
     }
     
-    func removeHabit(habitModel: HabitModel) {
+    func removeHabit(habitModel: HabitModel) -> Bool {
         DataController.shared.deleteEntityObjectByKeyValue(
             entityName: HabitEntity.self,
             key: "id",

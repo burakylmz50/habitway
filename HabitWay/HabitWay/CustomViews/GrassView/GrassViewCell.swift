@@ -21,20 +21,12 @@ struct GrassViewCell: View {
     @State var rect: CGRect = CGRect()
     
     public var body: some View {
-        GeometryReader { geo in
             ZStack {
-                RoundedRectangle (
-                    cornerSize: CGSize(width: geo.size.width / 10, height: geo.size.height / 10), style: .continuous
-                )
+                RoundedRectangle(cornerRadius: 3)
+                
                 .fill(setFillColor(date: date, level: level))
 //                .saturation(Double(level) * 0.1)
                 .brightness(level == 10 ? 0 : 0.1)
-                .onAppear {
-                    rect = geo.frame(in: .named("container"))
-                }
-                .onChange(of: viewModel.isPortrait){ _, _ in
-                    rect = geo.frame(in: .named("container"))
-                }
             }
             .aspectRatio(1.0, contentMode: .fit)
             .onChange(of: viewModel.touchLocation) { willtouchLocation, touchedLocation in
@@ -45,7 +37,6 @@ struct GrassViewCell: View {
                 print(date)
                 onCellTouch(date, level)
             }
-        }
     }
     
     private func setFillColor(date: String, level: Int) -> Color {
