@@ -46,7 +46,7 @@ struct HabitView: View {
                             .fill(.gray.opacity(0.2))
                             .frame(width: 30, height: 30)
                         
-                        Image(systemName: "plus.circle.fill")
+                        Image(systemName: habitModel.icon)
                             .resizable()
                             .frame(width: 20, height: 20)
                             .foregroundStyle(.gray)

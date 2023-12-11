@@ -29,25 +29,26 @@ struct HomeView: View {
                 VStack {
                     if !$viewModel.habits.isEmpty {
                         ForEach($viewModel.habits, id: \.id) { $habit in
-                            HomeGrassView(habitModel: habit, action: {
-                                let _ = print(habit)
-                            })
-                            .contextMenu {
-                                Button {
-                                    print(habit)
-                                    DispatchQueue.main.async {
-                                    withAnimation {
-                                            if viewModel.removeHabit(habitModel: habit) {
-                                                // TODO: eleman silinince freeze meydana geliyor.
-                                                viewModel.getHabits()
+                                HomeGrassView(habitModel: habit, action: {
+                                    let _ = print(habit)
+                                })
+                                .contextMenu {
+                                    Button {
+                                        print(habit)
+                                        DispatchQueue.main.async {
+                                        withAnimation {
+                                                if viewModel.removeHabit(habitModel: habit) {
+                                                    // TODO: eleman silinince freeze meydana geliyor.
+                                                    viewModel.getHabits()
+                                                }
                                             }
-                                        }
 
+                                        }
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
                                     }
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
                                 }
-                            }
+
                             Spacer(minLength: 20)
                         }
                         .id(UUID())

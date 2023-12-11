@@ -58,7 +58,7 @@ public struct GrassView: View {
                                     GrassViewCell(
                                         date: getDate(rowcol: [row, col]),
                                         level: getLevel(rowcol: [row, col]),
-                                        cellColor: .yellow,
+                                        cellColor: cellColor,
                                         onCellTouch: self.onCellTouch,
                                         row: row,
                                         col: col

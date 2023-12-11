@@ -26,6 +26,7 @@ struct InputView: View {
                 }
                 .autocorrectionDisabled()
                 .modifier(TextFieldLayout())
+                .submitLabel(.done)
         }
     }
 }
