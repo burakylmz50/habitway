@@ -46,6 +46,7 @@ final class DataController: ObservableObject {
         habit.subtitle = model.subtitle
         habit.date = model.date
         habit.icon = model.icon
+        habit.color = model.hexColor
         
         save(context: context)
     }
@@ -55,6 +56,7 @@ final class DataController: ObservableObject {
         habit.subtitle = model.subtitle
         habit.date = model.date
         habit.icon = model.icon
+        habit.color = model.hexColor
         
         save(context: context)
     }
@@ -108,7 +110,7 @@ final class DataController: ObservableObject {
                     title: $0.title ?? "",
                     subtitle: $0.subtitle ?? "" ,
                     date: $0.date ?? [],
-                    color: Color($0.color ?? ""),
+                    hexColor: $0.color ?? "",
                     icon: $0.icon ?? ""
                 )
             }

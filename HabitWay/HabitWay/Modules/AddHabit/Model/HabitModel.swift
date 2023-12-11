@@ -16,6 +16,6 @@ struct HabitModel: Identifiable, Equatable {
     var title: String
     var subtitle: String
     var date: [String]
-    var color: Color
+    var hexColor: String
     var icon: String
 }

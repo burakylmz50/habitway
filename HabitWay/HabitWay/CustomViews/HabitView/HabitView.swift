@@ -90,7 +90,7 @@ struct HabitView: View {
                     }) // Right Button
                 }
 
-                GrassView(testCase, row: 7, col: 52, cellColor: .gray.opacity(0.2))
+                GrassView(testCase, row: 7, col: 52, cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray)
                     .padding([.leading, .trailing, .bottom], 5)
                 
             }
@@ -101,5 +101,5 @@ struct HabitView: View {
 
 
 #Preview {
-    HabitView(habitModel: HabitModel(id: .init(), title: "name", subtitle: "description", date: ["2023-08-12"], color: .red, icon: "plus.circle.fill"))
+    HabitView(habitModel: HabitModel(id: .init(), title: "name", subtitle: "description", date: ["2023-08-12"], hexColor: "$0000FF", icon: "plus.circle.fill"))
 }

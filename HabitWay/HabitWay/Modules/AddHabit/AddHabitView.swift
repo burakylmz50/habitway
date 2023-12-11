@@ -39,7 +39,7 @@ struct AddHabitView: View {
                                 title: nameTextField,
                                 subtitle: descriptionTextField,
                                 date: [""],
-                                color: color,
+                                hexColor: color.toHex() ?? "$0000FF",
                                 icon: icon
                             ))
                         }
