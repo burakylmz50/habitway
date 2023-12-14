@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		653538AA2B279FCB00F28729 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538A92B279FCB00F28729 /* TabModel.swift */; };
+		653538AC2B27B4A100F28729 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538AB2B27B4A100F28729 /* ViewExtension.swift */; };
+		653538AF2B29E1E700F28729 /* KeyboardHeightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */; };
+		653538B12B2A292400F28729 /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538B02B2A292400F28729 /* SFSymbols.swift */; };
 		65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */; };
 		65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */; };
 		65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		653538A92B279FCB00F28729 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		653538AB2B27B4A100F28729 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightHelper.swift; sourceTree = "<group>"; };
+		653538B02B2A292400F28729 /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		65A8EA882B1BD81F00FB3C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -69,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		653538AD2B29E1DD00F28729 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */,
+				653538B02B2A292400F28729 /* SFSymbols.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		65A8EA892B1BDB7600FB3C65 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +116,7 @@
 				65A8EA882B1BD81F00FB3C65 /* Info.plist */,
 				65EB84532B1146E8000D5495 /* DataModel */,
 				65EB844A2B0E8C7C000D5495 /* ReusableViews */,
+				653538AD2B29E1DD00F28729 /* Helpers */,
 				65EB84362B0BA35A000D5495 /* CustomViews */,
 				65EB84312B0BA29A000D5495 /* Extensions */,
 				65EB842E2B0BA25B000D5495 /* Modules */,
@@ -151,6 +169,7 @@
 				65EB84342B0BA2D3000D5495 /* DateExtension.swift */,
 				65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */,
 				65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */,
+				653538AB2B27B4A100F28729 /* ViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				65EB84672B128785000D5495 /* HabitModel.swift */,
+				653538A92B279FCB00F28729 /* TabModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,15 +330,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653538B12B2A292400F28729 /* SFSymbols.swift in Sources */,
 				65EB84682B128785000D5495 /* HabitModel.swift in Sources */,
 				65EB84332B0BA2AD000D5495 /* StringExtension.swift in Sources */,
 				65EB84662B128778000D5495 /* AddHabitViewModel.swift in Sources */,
+				653538AF2B29E1E700F28729 /* KeyboardHeightHelper.swift in Sources */,
+				653538AC2B27B4A100F28729 /* ViewExtension.swift in Sources */,
 				65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */,
 				65EB84522B1146DC000D5495 /* HabitModel.xcdatamodeld in Sources */,
 				65EB843B2B0C05B0000D5495 /* GrassViewCell.swift in Sources */,
 				65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */,
 				65EB84352B0BA2D3000D5495 /* DateExtension.swift in Sources */,
 				65EB84212B0BA20B000D5495 /* HomeView.swift in Sources */,
+				653538AA2B279FCB00F28729 /* TabModel.swift in Sources */,
 				65EB84422B0CEE5A000D5495 /* ContainerView.swift in Sources */,
 				65EB84442B0CEE61000D5495 /* ContainerViewModel.swift in Sources */,
 				65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */,

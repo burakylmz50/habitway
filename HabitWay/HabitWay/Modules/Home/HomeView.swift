@@ -79,7 +79,7 @@ struct HomeView: View {
                     isPresentedAddHabitView: $isPresentedAddHabitView,
                     color: $color
                 )
-                .presentationDetents([.medium])
+                .presentationDetents([.large])
             }
         }
         .onAppear {
