@@ -280,6 +280,9 @@ struct AddHabitView: View {
                                                         .modifier(SymbolsGridStyle())
                                                         .onTapGesture {
                                                             selectedIcon = emoji
+                                                            if selectedColorIndex == nil {
+                                                                selectedColorIndex = 0
+                                                            }
                                                         }
 
 
@@ -437,8 +440,9 @@ struct AddHabitView: View {
             ForEach(TabModel.allCases, id: \.rawValue) { tab in
                 HStack(spacing: 10) {
                     Text(tab.rawValue)
-                        .font(.callout)
+                        .font(.system(size: 15, weight: .semibold))
                 }
+                .frame(height: 25)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 10)
                 .contentShape(.capsule)
