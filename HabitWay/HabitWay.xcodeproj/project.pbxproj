@@ -26,7 +26,6 @@
 		65EB84422B0CEE5A000D5495 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84412B0CEE5A000D5495 /* ContainerView.swift */; };
 		65EB84442B0CEE61000D5495 /* ContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84432B0CEE61000D5495 /* ContainerViewModel.swift */; };
 		65EB844C2B0E8C8C000D5495 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB844B2B0E8C8C000D5495 /* InputView.swift */; };
-		65EB844F2B0F8A63000D5495 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 65EB844E2B0F8A63000D5495 /* SFSymbolsPicker */; };
 		65EB84522B1146DC000D5495 /* HabitModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84502B1146DC000D5495 /* HabitModel.xcdatamodeld */; };
 		65EB84552B114A5E000D5495 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84542B114A5E000D5495 /* DataController.swift */; };
 		65EB84652B128778000D5495 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84632B128777000D5495 /* AddHabitView.swift */; };
@@ -70,7 +69,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65EB844F2B0F8A63000D5495 /* SFSymbolsPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +269,6 @@
 			);
 			name = HabitWay;
 			packageProductDependencies = (
-				65EB844E2B0F8A63000D5495 /* SFSymbolsPicker */,
 			);
 			productName = HabitWay;
 			productReference = 65EB841B2B0BA20B000D5495 /* HabitWay.app */;
@@ -302,7 +299,6 @@
 			);
 			mainGroup = 65EB84122B0BA20B000D5495;
 			packageReferences = (
-				65EB844D2B0F8A63000D5495 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
 			);
 			productRefGroup = 65EB841C2B0BA20B000D5495 /* Products */;
 			projectDirPath = "";
@@ -560,25 +556,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		65EB844D2B0F8A63000D5495 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alessiorubicini/SFSymbolsPicker";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		65EB844E2B0F8A63000D5495 /* SFSymbolsPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65EB844D2B0F8A63000D5495 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
-			productName = SFSymbolsPicker;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		65EB84502B1146DC000D5495 /* HabitModel.xcdatamodeld */ = {
