@@ -10,6 +10,7 @@ import SwiftUI
 extension Color {
     static let brandColor = Color("brandColor")
     static let backgroundColor = Color("backgroundColor")
+    static let habitViewBackgroundColor = Color("habitViewBackgroundColor")
 }
 
 extension Color {

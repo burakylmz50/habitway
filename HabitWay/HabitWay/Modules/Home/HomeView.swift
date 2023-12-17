@@ -30,7 +30,7 @@ struct HomeView: View {
                     if !$viewModel.habits.isEmpty {
                         ForEach($viewModel.habits, id: \.id) { $habit in
                             HomeGrassView(habitModel: habit, action: {
-                                let _ = print(habit)
+//                                viewModel.editHabit(habitModel: habit)
                             })
                             .contextMenu {
                                 Button {
@@ -61,7 +61,7 @@ struct HomeView: View {
             }
             .background(Color.backgroundColor)
             .toolbarTitleDisplayMode(.large)
-            .navigationTitle("Habit's")
+            .navigationTitle("Habits")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button("", systemImage: "plus.circle.fill") {

@@ -34,8 +34,8 @@ struct LaunchScreen: View {
                 scale = CGSize(width: 1, height: 1)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.9, execute: {
-                withAnimation(.easeIn(duration: 0.2)) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                withAnimation(.easeIn(duration: 0)) {
                     isPresented.toggle()
                 }
             })

@@ -33,7 +33,7 @@ struct AddHabitView: View {
     @State var selectedColorIndex: Int?
     @State var selectedIcon: String?
     
-    @State private var isKeyboardVisible = false
+    @State private var isKeyboardVisible = true
     
     @FocusState private var keyboardFocused: Bool
     
@@ -109,93 +109,30 @@ struct AddHabitView: View {
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
             
-            
-            //                VStack {
-            //                    HStack {
-            //                        Spacer()
-            //
-            //                        Button("", systemImage: "checkmark") {
-            //                            isPresentedAddHabitView = false
-            //
-            //                            viewModel.addHabit(model: .init(
-            //                                id: UUID(),
-            //                                title: nameTextField,
-            //                                subtitle: descriptionTextField,
-            //                                date: [""],
-            //                                hexColor: color.toHex() ?? "$0000FF",
-            //                                icon: icon
-            //                            ))
-            //                        }
-            //                        .tint(.brandColor)
-            //                        .disabled(isValidation)
-            //                    }
-            //
-            //                    VStack(spacing: 20) {
-            //                        InputView(
-            //                            text: $nameTextField,
-            //                            title: "Name (Required)",
-            //                            placeholder: "Reading books"
-            //                        )
-            //                        .onAppear {
-            //                            focusedField = "nameTextField"
-            //                        }
-            //
-            //                        InputView(
-            //                            text: $descriptionTextField,
-            //                            title: "Description",
-            //                            placeholder: "Description"
-            //                        )
-            //
-            //                        SquareColorPickerView(colorValue: $color)
-            //
-            //                        HStack {
-            //                            Text("Select Icon")
-            //                                .foregroundStyle(.gray)
-            //                                .font(.headline)
-            //
-            //                            Spacer()
-            //
-            //                            Button("", systemImage: icon) {
-            //                                isPresented.toggle()
-            //                            }
-            //                            .tint(.gray)
-            //                            .sheet(isPresented: $isPresented, content: {
-            //                                SymbolsPicker(selection: $icon, title: "Pick a symbol", autoDismiss: true)
-            //                            })
-            //                        }
-            //
-            //                        Divider()
-            //
-            //
-            //                        Rectangle()
-            //                            .frame(width: 100, height: 100)
-            //
-            //                        Spacer()
-            //
-            //                        TextField("Text", text: $nameTextField)
-            //                            .frame(alignment: .center)
-            //
-            //
-            //                    }
-            //                }
-            
-            
-            
-            
-            
-            
-            
-            
             VStack(spacing: 15) {
                 
-                ZStack {
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        isPresentedAddHabitView = false
+                    }, label: {
+                        Image(systemName: "chevron.down.circle.fill")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                            .padding([.top, .trailing])
+                            .foregroundStyle(.gray.opacity(0.5))
+                    })
+                }
+                
+                VStack(spacing: 0) {
                     VStack(spacing: 0) {
                         Rectangle()
                             .foregroundColor(selectedColorIndex != nil ? colors[selectedColorIndex!] : .gray.opacity(0.1))
                             .frame(width: 100, height: 100)
                             .cornerRadius(20)
                             .overlay(
-                                Image(systemName: "square.and.arrow.up.fill")
+                                Image(systemName: selectedIcon != nil ? selectedIcon! : "selection.pin.in.out")
                                     .resizable()
                                     .foregroundStyle(selectedColorIndex != nil ? .white : .gray.opacity(0.5))
                                     .aspectRatio(contentMode: .fill)
@@ -205,58 +142,63 @@ struct AddHabitView: View {
                             )
                             .padding(.top, 30)
                         
-                        VStack(spacing: 0) {
-                            TextField("New Habit", text: $nameTextField)
-                                .fontWeight(.semibold)
-                                .font(.title)
-                                .frame(alignment: .center)
-                                .multilineTextAlignment(.center)
-                                .focused($keyboardFocused)
-                                .onAppear {
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                        keyboardFocused = true
-                                    }
-                                }
-                            
-                            Text(nameTextField == "" ? "Tap to add name" : "Tap to rename")
-                                .foregroundStyle(.tertiary)
-                                .font(.subheadline)
-                                .fontWeight(.semibold)
-                                .tint(.gray.opacity(0.4))
-                                .opacity(!isKeyboardVisible ? 1 : 0)
-                            
-                        }
+                        TextField("New Habit", text: $nameTextField)
+                            .fontWeight(.semibold)
+                            .font(.title)
+                            .frame(alignment: .center)
+                            .multilineTextAlignment(.center)
+                            .focused($keyboardFocused)
+                            .onAppear {
+                                keyboardFocused = true
+                            }
+                        
+                        Text(nameTextField == "" ? "Tap to add name" : "Tap to rename")
+                            .foregroundStyle(.tertiary)
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .tint(.gray.opacity(0.4))
+                            .opacity(isKeyboardVisible ? 0 : 1)
+                        
+                        Button(action: {
+                            keyboardFocused = false
+                        }, label: {
+                            Text("Add")
+                                .frame(width: 100, height: !isKeyboardVisible ? 0 : 30)
+                                .background(nameTextField.count > 2 ? .brand : .gray.opacity(0.2))
+                                .foregroundStyle(nameTextField.count > 2 ? .black.opacity(0.8) : .gray.opacity(0.5))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .disabled(nameTextField.count < 3)
+                                .opacity(!isKeyboardVisible ? 0 : 1)
+                        })
+                        
                     }
-                    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
-                        self.isKeyboardVisible = true
-                    }
-                    .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                        self.isKeyboardVisible = false
-                    }
+                    .scaleEffect(isKeyboardVisible ? CGSize(width: 1.5, height: 1.5) : CGSize(width: 1, height: 1), anchor: .center)
+                    .offset(y: isKeyboardVisible ? 100 : 0)
+                    .animation(.spring(), value: isKeyboardVisible)
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+                    self.isKeyboardVisible = true
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    self.isKeyboardVisible = false
                 }
                 .onTapGesture {
                     keyboardFocused = true
-//                    if nameTextField == "" {
-//                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-//                    }
+                    if nameTextField == "" && !isKeyboardVisible {
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }
                 }
-                .scaleEffect(isKeyboardVisible ? CGSize(width: 1.5, height: 1.5) : CGSize(width: 1, height: 1), anchor: .center)
-                .offset(y: isKeyboardVisible ? 50 : 0)
-                .animation(.spring(), value: isKeyboardVisible)
-                
-                
                 
                 VStack {
+                    
                     CustomTabBar()
                         .padding(.top, 20)
-                    
                     
                     GeometryReader {
                         let size  = $0.size
                         
                         ScrollView(.horizontal) {
                             LazyHStack(spacing: 0) {
-                                
                                 GeometryReader {
                                     let size = $0.size
                                     
@@ -274,7 +216,7 @@ struct AddHabitView: View {
                                                                 .aspectRatio(contentMode: .fit)
                                                                 .font(.headline)
                                                                 .padding(12)
-                                                                
+                                                            
                                                         }
                                                         .modifier(SymbolsGridStyle())
                                                         .onTapGesture {
@@ -283,8 +225,8 @@ struct AddHabitView: View {
                                                                 selectedColorIndex = 0
                                                             }
                                                         }
-
-
+                                                    
+                                                    
                                                 }
                                             } header: {
                                                 HStack {
@@ -306,13 +248,13 @@ struct AddHabitView: View {
                                                                 .aspectRatio(contentMode: .fit)
                                                                 .font(.headline)
                                                                 .padding(12)
-                                                                
+                                                            
                                                         }
                                                         .onTapGesture {
                                                             selectedIcon = emoji
                                                         }
                                                         .modifier(SymbolsGridStyle())
-
+                                                    
                                                 }
                                             } header: {
                                                 HStack {
@@ -321,43 +263,14 @@ struct AddHabitView: View {
                                                     Spacer()
                                                 }
                                             }
-                                            
-//                                            Section() {
-//                                                ForEach(SFSymbols.random, id: \.self) { emoji in
-//                                                    Rectangle()
-//                                                        .frame(width: size.width/6)
-//                                                        .background(emoji == selectedIcon ? colors[selectedColorIndex ?? 0] : .gray.opacity(0.1))
-//                                                        .overlay {
-//                                                            Image(systemName: emoji)
-//                                                                .resizable()
-//                                                                .foregroundStyle(emoji == selectedIcon ? .white : .gray.opacity(0.5))
-//                                                                .aspectRatio(contentMode: .fit)
-//                                                                .font(.headline)
-//                                                                .padding(12)
-//                                                                
-//                                                        }
-//                                                        .onTapGesture {
-//                                                            selectedIcon = emoji
-//                                                        }
-//                                                        .modifier(SymbolsGridStyle())
-//                                                }
-//                                            } header: {
-//                                                HStack {
-//                                                    Text(SFSymbolsType.random.rawValue)
-//                                                        .bold()
-//                                                    Spacer()
-//                                                }
-//                                            }
-                                            
                                         }
                                         .padding(.horizontal)
                                     }
                                     
-      
+                                    
                                 }
                                 .id(TabModel.symbol)
                                 .containerRelativeFrame(.horizontal)
-                                
                                 
                                 ScrollView {
                                     LazyVGrid(columns: colorsColumns, spacing: 10) {
@@ -365,9 +278,8 @@ struct AddHabitView: View {
                                         ForEach(0..<colors.count) { index in
                                             Rectangle()
                                                 .fill(colors[index])
-                                            //                                            .frame(height: 50)
+                                                .cornerRadius(30)
                                                 .aspectRatio(contentMode: .fill)
-                                                .cornerRadius(25)
                                                 .onTapGesture {
                                                     selectedColorIndex = index
                                                 }
@@ -376,14 +288,14 @@ struct AddHabitView: View {
                                                         .stroke(
                                                             index == selectedColorIndex ? colors[index].opacity(0.5) : Color.clear,
                                                             style: StrokeStyle(
-                                                                lineWidth: 3,
+                                                                lineWidth: 6,
                                                                 lineCap: .round,
                                                                 lineJoin: .miter,
                                                                 miterLimit: 0,
                                                                 dashPhase: 0
                                                             )
                                                         )
-                                                        .frame(width: 63, height: 63)
+                                                        .frame(width: 60, height: 60)
                                                     
                                                 )
                                         }
@@ -406,24 +318,35 @@ struct AddHabitView: View {
                         .scrollClipDisabled()
                     }
                     
-                    Button("Save") {
+                    Button {
+                        isPresentedAddHabitView = false
                         
+                        viewModel.addHabit(model: .init(
+                            id: UUID(),
+                            title: nameTextField,
+                            subtitle: descriptionTextField,
+                            date: [""],
+                            hexColor: colors[selectedColorIndex ?? 0].toHex() ?? "$0000FF",
+                            icon: selectedIcon ?? "AppIcon"
+                        ))
+                    } label: {
+                        Text("Save")
+                            .frame(maxWidth: .infinity, maxHeight: 50)
+                            .foregroundColor(!isValid ? .white : .black.opacity(0.8))
+                            .background(!isValid ? .gray.opacity(0.2) : Color.brandColor)
+                            .contentShape(Rectangle())
                     }
-                    .frame(maxWidth: .infinity, maxHeight: 50)
-                    .background(!isValid ? .gray.opacity(0.2) : Color.brandColor)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .padding()
-                    .background(Color.backgroundColor)
-                    .foregroundColor(.white)
                     .font(.system(size: 20, weight: .semibold))
                     .disabled(!isValid)
+                    
                 }
-                .offset(y: isKeyboardVisible ? self.keyboardHeightHelper.keyboardHeight:0)
-                .animation(.spring(), value: isKeyboardVisible)
+                .offset(y: isKeyboardVisible ? 1000:0)
+                .animation(.interactiveSpring(duration: 0.5), value: isKeyboardVisible)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(.gray.opacity(0.1))
-               
         }
         .navigationDestination(for: HomeRoute.self) { model in }
         .sheet(isPresented: $isAddHabitSelector, onDismiss: {

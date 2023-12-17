@@ -3,4 +3,54 @@
    uuid = "07092E7F-AC7C-4E55-83A4-C08E6F5AF023"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B302F7BE-EDA0-4CE1-8DFE-8D792B7CFBAF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HabitWay/Modules/Home/HomeView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "B302F7BE-EDA0-4CE1-8DFE-8D792B7CFBAF - 5c511b84d9a3cf99"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (SwiftUI.Binding&lt;HabitWay.HabitModel&gt;) -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.contextMenu&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(menuItems: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in implicit closure #1 (SwiftUI.Binding&lt;HabitWay.HabitModel&gt;) -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.contextMenu&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(menuItems: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in closure #2 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.id&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Hashable&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, HabitWay.HomeView.ContentUnavailableView&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in HabitWay.HomeView.body.getter : some"
+                  moduleName = "HabitWay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/burakyilmaz/habitway/HabitWay/HabitWay/Modules/Home/HomeView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "B302F7BE-EDA0-4CE1-8DFE-8D792B7CFBAF - 5c511b84d9a3cff8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (SwiftUI.Binding&lt;HabitWay.HabitModel&gt;) -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.contextMenu&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(menuItems: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in implicit closure #1 (SwiftUI.Binding&lt;HabitWay.HabitModel&gt;) -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.contextMenu&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(menuItems: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in closure #2 () -&gt; SwiftUI._ConditionalContent&lt;&lt;&lt;opaque return type of SwiftUI.View.id&lt;&#x3c4;_0_0 where &#x3c4;_1_0: Swift.Hashable&gt;(&#x3c4;_1_0) -&gt; some&gt;&gt;.0, HabitWay.HomeView.ContentUnavailableView&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, &lt;&lt;opaque return type of SwiftUI.View.frame(minWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxWidth: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, minHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, idealHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, maxHeight: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, alignment: SwiftUI.Alignment) -&gt; some&gt;&gt;.0)&gt; in closure #1 () -&gt; &lt;&lt;opaque return type of SwiftUI.View.sheet&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.View&gt;(isPresented: SwiftUI.Binding&lt;Swift.Bool&gt;, onDismiss: Swift.Optional&lt;() -&gt; ()&gt;, content: () -&gt; &#x3c4;_1_0) -&gt; some&gt;&gt;.0 in HabitWay.HomeView.body.getter : some"
+                  moduleName = "HabitWay"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/burakyilmaz/habitway/HabitWay/HabitWay/Modules/Home/HomeView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

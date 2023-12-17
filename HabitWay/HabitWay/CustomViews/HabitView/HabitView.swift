@@ -34,10 +34,12 @@ struct HabitView: View {
           "2023-11-22": 10
       ]
     
+    private var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 5)
-                .fill(.gray.opacity(0.2))
+                .fill(Color.habitViewBackground)
         
             VStack(spacing: 0) {
                 HStack {
@@ -49,18 +51,19 @@ struct HabitView: View {
                         Image(systemName: habitModel.icon)
                             .resizable()
                             .frame(width: 20, height: 20)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(.white)
+                            .scaledToFit()
                         
                     } // Left Button
                     .padding([.leading], 5)
                     
                     VStack(alignment: .leading) {
                         Text(habitModel.title.uppercased())
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundStyle(.white)
                         Text(habitModel.subtitle.capitalized)
                             .font(.caption2)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(.white)
                     }
                     .padding([.top, .bottom], 5)
                     
@@ -68,16 +71,16 @@ struct HabitView: View {
                     
                     Button(action: {
                         if !isSelectedCurrentDay {
-                            testCase.updateValue(10, forKey: "2023-12-08")
+                            testCase.updateValue(10, forKey: todayDate)
                         } else {
-                            testCase.removeValue(forKey: "2023-12-08")
+                            testCase.removeValue(forKey: todayDate)
                         }
                         isSelectedCurrentDay.toggle()
                         action?()
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .circular)
-                                .fill(.gray.opacity(0.2))
+                                .fill(isSelectedCurrentDay ? Color(hex: habitModel.hexColor)! : .gray.opacity(0.2))
                                 .frame(width: 30, height: 30)
                             
                             Image(systemName: "checkmark")
@@ -85,7 +88,6 @@ struct HabitView: View {
                                 .frame(width: 20, height: 20)
                                 .foregroundStyle(.brand)
                         }
-
                         .padding([.trailing], 5)
                     }) // Right Button
                 }

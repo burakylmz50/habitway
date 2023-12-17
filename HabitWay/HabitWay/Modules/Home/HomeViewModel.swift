@@ -45,6 +45,15 @@ final class HomeViewModel: ObservableObject {
             value: habitModel.id
         )
     }
+    
+    func editHabit(habitModel: HabitModel) -> Bool {
+        DataController.shared.updateEntityObjectByKeyValue(
+            className: HabitEntity.self, 
+            key: "id",
+            value: habitModel.id,
+            columns: habitModel.date
+        )
+    }
 }
 
 extension HomeViewModel {
