@@ -10,15 +10,57 @@ import SwiftUI
 struct Paywall: View {
     @State private var showAllSubscriptions = false
     @ObservedObject var paywallViewModel = PaywallViewModel.shared
+    @State private var isAnimating = true
 
     
     var body: some View {
         ZStack {
-            VStack(spacing: 5) {
+            VStack(spacing: showAllSubscriptions ? 2 : 8){
                 Spacer()
-                Text("Pro")
-                    .font(.system(size: 40))
-                    .foregroundColor(Color.black)
+                HStack(alignment: .center) {
+                            ZStack(alignment: .center) {
+                                Image("wheat_wreath_left")
+                                    .resizable()
+                                    .frame(width: 80, height: 80)
+                                    .padding(.trailing,-20)
+
+                                Rectangle()
+                                    .fill(Color.white)
+                                    .frame(width: 80, height: 80)
+                                    .offset(y: isAnimating ? -80 : 0)
+                                    .animation(Animation.easeInOut(duration: 0.3).delay(0.3))
+                                    .opacity(showAllSubscriptions ? 0 : 1)
+
+                            }
+
+                            Text("Pro")
+                                .font(.system(size: 40))
+                                .foregroundColor(Color.black)
+                                .onTapGesture {
+                                    withAnimation {
+                                        isAnimating.toggle()
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                            withAnimation {
+                                                isAnimating.toggle()
+                                            }
+                                        }                                    }
+                                }
+
+                            ZStack(alignment: .center) {
+                                Image("wheat_wreath_right")
+                                    .resizable()
+                                    .frame(width: 80, height: 80)
+                                    .padding(.leading,-20)
+
+                                Rectangle()
+                                    .fill(Color.white)
+                                    .frame(width: 80, height: 80)
+                                    .offset(y: isAnimating ? -80 : 0)
+                                    .animation(Animation.easeInOut(duration: 0.3).delay(0.3))
+                                    .opacity(showAllSubscriptions ? 0 : 1)
+
+                            }
+                        }
                 Text("Unlimited Cards")
                     .font(.system(size: 24))
                     .foregroundColor(Color.black)
@@ -82,6 +124,8 @@ struct Paywall: View {
                     .font(.system(size: 11))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)
+                    .opacity(0.6)
+                    
                 
             }
         }
