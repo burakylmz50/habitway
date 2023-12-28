@@ -79,14 +79,14 @@ final class DataController: ObservableObject {
             let predicate = NSPredicate(format: "\(key) == %@", iValue as CVarArg)
             fetchRequest.predicate = predicate
         }
-        
         do {
             let result = try context.fetch(fetchRequest)
             if result.count != 0 {
                 if let managedObject = result[0] as? NSManagedObject {
-                    for (value) in columns {
-                        managedObject.setValue(value, forKey: key)
-                    }
+
+//                    managedObject.date = []
+                    
+                    managedObject.setValue(columns, forKey: "date")
                     do {
                         try context.save()
                         return true
@@ -100,6 +100,26 @@ final class DataController: ObservableObject {
         } catch let error {
             print(error.localizedDescription)
         }
+//        do {
+//            let result = try context.fetch(fetchRequest)
+//            if result.count != 0 {
+//                if let managedObject = result[0] as? NSManagedObject {
+//                    for (value) in columns {
+//                        managedObject.setValue(value, forKey: "id")
+//                    }
+//                    do {
+//                        try context.save()
+//                        return true
+//                    }
+//                    catch let error {
+//                        print(error.localizedDescription)
+//                    }
+//                }
+//            }
+//            return false
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
         return false
     }
     

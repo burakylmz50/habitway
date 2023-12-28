@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650B43A72B3C9D4E00BA2EF3 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B43A62B3C9D4E00BA2EF3 /* ArrayExtension.swift */; };
+		650B43AA2B3E34B300BA2EF3 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B43A92B3E34B300BA2EF3 /* NotificationView.swift */; };
 		653538AA2B279FCB00F28729 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538A92B279FCB00F28729 /* TabModel.swift */; };
 		653538AC2B27B4A100F28729 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538AB2B27B4A100F28729 /* ViewExtension.swift */; };
 		653538AF2B29E1E700F28729 /* KeyboardHeightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		650B43A62B3C9D4E00BA2EF3 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		650B43A92B3E34B300BA2EF3 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		653538A92B279FCB00F28729 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
 		653538AB2B27B4A100F28729 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightHelper.swift; sourceTree = "<group>"; };
@@ -75,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		650B43A82B3E34AB00BA2EF3 /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				650B43A92B3E34B300BA2EF3 /* NotificationView.swift */,
+			);
+			path = NotificationView;
+			sourceTree = "<group>";
+		};
 		653538AD2B29E1DD00F28729 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +180,7 @@
 				65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */,
 				65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */,
 				653538AB2B27B4A100F28729 /* ViewExtension.swift */,
+				650B43A62B3C9D4E00BA2EF3 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 		65EB84362B0BA35A000D5495 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				650B43A82B3E34AB00BA2EF3 /* NotificationView */,
 				65EB846A2B1287EC000D5495 /* HabitView */,
 				65EB84392B0C05A5000D5495 /* GrassView */,
 			);
@@ -329,11 +343,13 @@
 				653538B12B2A292400F28729 /* SFSymbols.swift in Sources */,
 				65EB84682B128785000D5495 /* HabitModel.swift in Sources */,
 				65EB84332B0BA2AD000D5495 /* StringExtension.swift in Sources */,
+				650B43A72B3C9D4E00BA2EF3 /* ArrayExtension.swift in Sources */,
 				65EB84662B128778000D5495 /* AddHabitViewModel.swift in Sources */,
 				653538AF2B29E1E700F28729 /* KeyboardHeightHelper.swift in Sources */,
 				653538AC2B27B4A100F28729 /* ViewExtension.swift in Sources */,
 				65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */,
 				65EB84522B1146DC000D5495 /* HabitModel.xcdatamodeld in Sources */,
+				650B43AA2B3E34B300BA2EF3 /* NotificationView.swift in Sources */,
 				65EB843B2B0C05B0000D5495 /* GrassViewCell.swift in Sources */,
 				65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */,
 				65EB84352B0BA2D3000D5495 /* DateExtension.swift in Sources */,
@@ -482,7 +498,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitWay/Supporting Files/Preview Content\"";
-				DEVELOPMENT_TEAM = RGQUXDWRS8;
+				DEVELOPMENT_TEAM = S9YX4XA54Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitWay/Info.plist;
@@ -512,7 +528,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitWay/Supporting Files/Preview Content\"";
-				DEVELOPMENT_TEAM = RGQUXDWRS8;
+				DEVELOPMENT_TEAM = S9YX4XA54Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitWay/Info.plist;

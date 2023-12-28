@@ -20,6 +20,8 @@ final class HomeViewModel: ObservableObject {
     @Published var navigationPath = NavigationPath()
     @Published var habits = [HabitModel]()
     
+    var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
+    
     let container: ContainerViewModel
     
     init(container: ContainerViewModel) {
@@ -46,13 +48,46 @@ final class HomeViewModel: ObservableObject {
         )
     }
     
+    func removeHabitDay(date: String) -> Bool {
+        let isRemoveHabitDay = DataController.shared.updateEntityObjectByKeyValue(
+            className: HabitEntity.self,
+            key: "date",
+            value: date,
+            columns: Array(arrayLiteral: date)
+        )
+        
+        if isRemoveHabitDay {
+            getHabits()
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func editHabit(habitModel: HabitModel) -> Bool {
-        DataController.shared.updateEntityObjectByKeyValue(
-            className: HabitEntity.self, 
+        var dates = habitModel.date
+        
+        if !dates.contains(todayDate) {
+            dates.append(todayDate)
+        } else {
+            if let index = dates.firstIndex(of: todayDate) {
+                dates.remove(at: index)
+            }
+        }
+        
+        let isUpdateEntity = DataController.shared.updateEntityObjectByKeyValue(
+            className: HabitEntity.self,
             key: "id",
             value: habitModel.id,
-            columns: habitModel.date
+            columns: dates
         )
+        
+        if isUpdateEntity {
+            getHabits()
+            return true
+        } else {
+            return false
+        }
     }
 }
 

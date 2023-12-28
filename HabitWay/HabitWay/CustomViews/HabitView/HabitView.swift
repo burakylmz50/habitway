@@ -9,32 +9,18 @@ import SwiftUI
 
 struct HabitView: View {
     
+    var isSelectedCurrentDay: Bool
+    
     var habitModel: HabitModel
     var action: (() -> Void)?
     
     init(habitModel: HabitModel, action: (() -> Void)? = nil) {
         self.habitModel = habitModel
         self.action = action
+        self.isSelectedCurrentDay = habitModel.date.contains(todayDate)
     }
     
-    @State var isSelectedCurrentDay = false
-    
-    @State var testCase = [
-          "2023-12-06": 10,
-          "2023-12-05": 10,
-          "2023-12-03": 10,
-          "2023-12-01": 10,
-          "2023-12-02": 10,
-          "2023-12-07": 10,
-          "2023-11-27": 10,
-          "2023-11-26": 10,
-          "2023-11-25": 10,
-          "2023-11-24": 10,
-          "2023-11-23": 10,
-          "2023-11-22": 10
-      ]
-    
-    private var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
+    var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
     
     var body: some View {
         ZStack {
@@ -70,12 +56,6 @@ struct HabitView: View {
                     Spacer()
                     
                     Button(action: {
-                        if !isSelectedCurrentDay {
-                            testCase.updateValue(10, forKey: todayDate)
-                        } else {
-                            testCase.removeValue(forKey: todayDate)
-                        }
-                        isSelectedCurrentDay.toggle()
                         action?()
                     }, label: {
                         ZStack {
@@ -92,7 +72,7 @@ struct HabitView: View {
                     }) // Right Button
                 }
 
-                GrassView(testCase, row: 7, col: 52, cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray)
+                GrassView(habitModel.date.toDictionary(), row: 7, col: 52, cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray)
                     .padding([.leading, .trailing, .bottom], 5)
                 
             }
@@ -105,3 +85,6 @@ struct HabitView: View {
 #Preview {
     HabitView(habitModel: HabitModel(id: .init(), title: "name", subtitle: "description", date: ["2023-08-12"], hexColor: "$0000FF", icon: "plus.circle.fill"))
 }
+
+// bugüne tıklanıldığında datayı kaydedecek. Tarihten okuma yapacak
+// Tarihi ileri sararak geleceği kontrol et

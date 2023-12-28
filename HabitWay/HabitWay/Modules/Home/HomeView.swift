@@ -14,6 +14,7 @@ struct HomeView: View {
     @State private var isPresentedAddHabitView: Bool = false
     @State private var color: Color = .clear
     
+    
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
             ScrollView(.vertical) {
@@ -30,16 +31,30 @@ struct HomeView: View {
                     if !$viewModel.habits.isEmpty {
                         ForEach($viewModel.habits, id: \.id) { $habit in
                             HomeGrassView(habitModel: habit, action: {
-//                                viewModel.editHabit(habitModel: habit)
+                                if viewModel.editHabit(habitModel: habit) {
+                                    NotificationCenter.default.post(
+                                        name: .init("NOTIFY"),
+                                        object: NotificationModel(
+                                            title: "Dynamic Island",
+                                            content: "This is an example 😍"
+                                        )
+                                    )
+                                }
                             })
                             .contextMenu {
                                 Button {
-                                    print(habit)
                                     DispatchQueue.main.async {
                                         withAnimation {
                                             if viewModel.removeHabit(habitModel: habit) {
-                                                // TODO: eleman silinince freeze meydana geliyor.
                                                 viewModel.getHabits()
+                                                
+                                                NotificationCenter.default.post(
+                                                    name: .init("NOTIFY"),
+                                                    object: NotificationModel(
+                                                        title: "Dynamic Island",
+                                                        content: "This is an example 😍"
+                                                    )
+                                                )
                                             }
                                         }
                                         
