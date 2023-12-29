@@ -71,10 +71,14 @@ struct HabitView: View {
                         .padding([.trailing], 5)
                     }) // Right Button
                 }
-
-                GrassView(habitModel.date.toDictionary(), row: 7, col: 52, cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray)
-                    .padding([.leading, .trailing, .bottom], 5)
                 
+                GrassView(
+                    habitModel.date.toDictionary(),
+                    row: 7,
+                    col: 52,
+                    cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray
+                )
+                .padding([.leading, .trailing, .bottom], 5)
             }
         }
         .frame(height: 145)
@@ -85,6 +89,3 @@ struct HabitView: View {
 #Preview {
     HabitView(habitModel: HabitModel(id: .init(), title: "name", subtitle: "description", date: ["2023-08-12"], hexColor: "$0000FF", icon: "plus.circle.fill"))
 }
-
-// bugüne tıklanıldığında datayı kaydedecek. Tarihten okuma yapacak
-// Tarihi ileri sararak geleceği kontrol et

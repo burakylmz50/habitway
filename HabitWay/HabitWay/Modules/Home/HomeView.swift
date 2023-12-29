@@ -78,24 +78,32 @@ struct HomeView: View {
             .toolbarTitleDisplayMode(.large)
             .navigationTitle("Habits")
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("", systemImage: "plus.circle.fill") {
-                        isPresentedAddHabitView.toggle()
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        Button("", systemImage: "star.square.on.square.fill") {
+
+                        }
+                        .tint(Color.brandColor)
+                        .opacity(1)
+                        
+                        Button("", systemImage: "plus.circle.fill") {
+                            isPresentedAddHabitView.toggle()
+                        }
+                        .tint(Color.brandColor)
+                        .sheet(isPresented: $isPresentedAddHabitView, onDismiss: {
+                            viewModel.getHabits()
+                        }) {
+                            AddHabitView(
+                                viewModel: AddHabitViewModel(),
+                                isPresentedAddHabitView: $isPresentedAddHabitView,
+                                color: $color
+                            )
+                            .presentationDetents([.large])
+                        }
                     }
-                    .tint(Color.brandColor)
                 }
             }
             .navigationDestination(for: HomeRoute.self) { model in }
-            .sheet(isPresented: $isPresentedAddHabitView, onDismiss: {
-                viewModel.getHabits()
-            }) {
-                AddHabitView(
-                    viewModel: AddHabitViewModel(),
-                    isPresentedAddHabitView: $isPresentedAddHabitView,
-                    color: $color
-                )
-                .presentationDetents([.large])
-            }
         }
         .onAppear {
             viewModel.getHabits()
