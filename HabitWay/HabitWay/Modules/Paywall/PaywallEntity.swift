@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 struct PaywallEntity: View {
     @State var entity : SubscriptionData
     @Binding var showSubscriptions : Bool

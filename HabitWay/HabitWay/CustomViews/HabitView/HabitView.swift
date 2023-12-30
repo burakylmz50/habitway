@@ -9,35 +9,23 @@ import SwiftUI
 
 struct HabitView: View {
     
+    var isSelectedCurrentDay: Bool
+    
     var habitModel: HabitModel
     var action: (() -> Void)?
     
     init(habitModel: HabitModel, action: (() -> Void)? = nil) {
         self.habitModel = habitModel
         self.action = action
+        self.isSelectedCurrentDay = habitModel.date.contains(todayDate)
     }
     
-    @State var isSelectedCurrentDay = false
-    
-    @State var testCase = [
-          "2023-12-06": 10,
-          "2023-12-05": 10,
-          "2023-12-03": 10,
-          "2023-12-01": 10,
-          "2023-12-02": 10,
-          "2023-12-07": 10,
-          "2023-11-27": 10,
-          "2023-11-26": 10,
-          "2023-11-25": 10,
-          "2023-11-24": 10,
-          "2023-11-23": 10,
-          "2023-11-22": 10
-      ]
+    var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 5)
-                .fill(.gray.opacity(0.2))
+                .fill(Color.habitViewBackground)
         
             VStack(spacing: 0) {
                 HStack {
@@ -49,35 +37,30 @@ struct HabitView: View {
                         Image(systemName: habitModel.icon)
                             .resizable()
                             .frame(width: 20, height: 20)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(.white)
+                            .scaledToFit()
                         
                     } // Left Button
                     .padding([.leading], 5)
                     
                     VStack(alignment: .leading) {
                         Text(habitModel.title.uppercased())
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
+                            .font(.system(size: 16, weight: .regular))
+                            .foregroundStyle(.white)
                         Text(habitModel.subtitle.capitalized)
                             .font(.caption2)
-                            .foregroundStyle(.gray)
+                            .foregroundStyle(.white)
                     }
                     .padding([.top, .bottom], 5)
                     
                     Spacer()
                     
                     Button(action: {
-                        if !isSelectedCurrentDay {
-                            testCase.updateValue(10, forKey: "2023-12-08")
-                        } else {
-                            testCase.removeValue(forKey: "2023-12-08")
-                        }
-                        isSelectedCurrentDay.toggle()
                         action?()
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .circular)
-                                .fill(.gray.opacity(0.2))
+                                .fill(isSelectedCurrentDay ? Color(hex: habitModel.hexColor)! : .gray.opacity(0.2))
                                 .frame(width: 30, height: 30)
                             
                             Image(systemName: "checkmark")
@@ -85,14 +68,17 @@ struct HabitView: View {
                                 .frame(width: 20, height: 20)
                                 .foregroundStyle(.brand)
                         }
-
                         .padding([.trailing], 5)
                     }) // Right Button
                 }
-
-                GrassView(testCase, row: 7, col: 52, cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray)
-                    .padding([.leading, .trailing, .bottom], 5)
                 
+                GrassView(
+                    habitModel.date.toDictionary(),
+                    row: 7,
+                    col: 52,
+                    cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray
+                )
+                .padding([.leading, .trailing, .bottom], 5)
             }
         }
         .frame(height: 145)

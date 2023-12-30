@@ -12,7 +12,9 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     @State private var isPresentedAddHabitView: Bool = false
+    @State private var isPresentedPaywall: Bool = false
     @State private var color: Color = .clear
+    
     
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
@@ -30,16 +32,30 @@ struct HomeView: View {
                     if !$viewModel.habits.isEmpty {
                         ForEach($viewModel.habits, id: \.id) { $habit in
                             HomeGrassView(habitModel: habit, action: {
-                                let _ = print(habit)
+                                if viewModel.editHabit(habitModel: habit) {
+                                    NotificationCenter.default.post(
+                                        name: .init("NOTIFY"),
+                                        object: NotificationModel(
+                                            title: "Dynamic Island",
+                                            content: "This is an example 😍"
+                                        )
+                                    )
+                                }
                             })
                             .contextMenu {
                                 Button {
-                                    print(habit)
                                     DispatchQueue.main.async {
                                         withAnimation {
                                             if viewModel.removeHabit(habitModel: habit) {
-                                                // TODO: eleman silinince freeze meydana geliyor.
                                                 viewModel.getHabits()
+                                                
+                                                NotificationCenter.default.post(
+                                                    name: .init("NOTIFY"),
+                                                    object: NotificationModel(
+                                                        title: "Dynamic Island",
+                                                        content: "This is an example 😍"
+                                                    )
+                                                )
                                             }
                                         }
                                         
@@ -61,26 +77,40 @@ struct HomeView: View {
             }
             .background(Color.backgroundColor)
             .toolbarTitleDisplayMode(.large)
-            .navigationTitle("Habit's")
+            .navigationTitle("Habits")
             .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button("", systemImage: "plus.circle.fill") {
-                        isPresentedAddHabitView.toggle()
+                ToolbarItem(placement: .topBarTrailing) {
+                    HStack {
+                        Button("", systemImage: "star.square.on.square.fill") {
+                            isPresentedPaywall.toggle()
+                        }
+                        .tint(Color.brandColor)
+                        .opacity(1)
+                        .sheet(isPresented: $isPresentedPaywall, onDismiss: {
+                           
+                        }) {
+                            Paywall()
+                            .presentationDetents([.large])
+                        }
+                        
+                        Button("", systemImage: "plus.circle.fill") {
+                            isPresentedAddHabitView.toggle()
+                        }
+                        .tint(Color.brandColor)
+                        .sheet(isPresented: $isPresentedAddHabitView, onDismiss: {
+                            viewModel.getHabits()
+                        }) {
+                            AddHabitView(
+                                viewModel: AddHabitViewModel(),
+                                isPresentedAddHabitView: $isPresentedAddHabitView,
+                                color: $color
+                            )
+                            .presentationDetents([.large])
+                        }
                     }
-                    .tint(Color.brandColor)
                 }
             }
             .navigationDestination(for: HomeRoute.self) { model in }
-            .sheet(isPresented: $isPresentedAddHabitView, onDismiss: {
-                viewModel.getHabits()
-            }) {
-                AddHabitView(
-                    viewModel: AddHabitViewModel(),
-                    isPresentedAddHabitView: $isPresentedAddHabitView,
-                    color: $color
-                )
-                .presentationDetents([.medium])
-            }
         }
         .onAppear {
             viewModel.getHabits()

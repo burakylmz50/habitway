@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "wheat_wreath_right.pdf",
-      "idiom" : "universal"
+      "filename" : "wheat_wreath_right.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "wheat_wreath_right@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "wheat_wreath_right@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

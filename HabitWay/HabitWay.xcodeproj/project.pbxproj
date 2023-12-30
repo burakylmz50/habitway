@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		650B43A72B3C9D4E00BA2EF3 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B43A62B3C9D4E00BA2EF3 /* ArrayExtension.swift */; };
+		650B43AA2B3E34B300BA2EF3 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650B43A92B3E34B300BA2EF3 /* NotificationView.swift */; };
+		653538AA2B279FCB00F28729 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538A92B279FCB00F28729 /* TabModel.swift */; };
+		653538AC2B27B4A100F28729 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538AB2B27B4A100F28729 /* ViewExtension.swift */; };
+		653538AF2B29E1E700F28729 /* KeyboardHeightHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */; };
+		653538B12B2A292400F28729 /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538B02B2A292400F28729 /* SFSymbols.swift */; };
 		65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */; };
 		65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */; };
 		65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */; };
@@ -22,7 +28,6 @@
 		65EB84422B0CEE5A000D5495 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84412B0CEE5A000D5495 /* ContainerView.swift */; };
 		65EB84442B0CEE61000D5495 /* ContainerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84432B0CEE61000D5495 /* ContainerViewModel.swift */; };
 		65EB844C2B0E8C8C000D5495 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB844B2B0E8C8C000D5495 /* InputView.swift */; };
-		65EB844F2B0F8A63000D5495 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 65EB844E2B0F8A63000D5495 /* SFSymbolsPicker */; };
 		65EB84522B1146DC000D5495 /* HabitModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84502B1146DC000D5495 /* HabitModel.xcdatamodeld */; };
 		65EB84552B114A5E000D5495 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84542B114A5E000D5495 /* DataController.swift */; };
 		65EB84652B128778000D5495 /* AddHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84632B128777000D5495 /* AddHabitView.swift */; };
@@ -35,6 +40,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		650B43A62B3C9D4E00BA2EF3 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		650B43A92B3E34B300BA2EF3 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		653538A92B279FCB00F28729 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		653538AB2B27B4A100F28729 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHeightHelper.swift; sourceTree = "<group>"; };
+		653538B02B2A292400F28729 /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		65A8EA882B1BD81F00FB3C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -68,13 +79,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65EB844F2B0F8A63000D5495 /* SFSymbolsPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		650B43A82B3E34AB00BA2EF3 /* NotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				650B43A92B3E34B300BA2EF3 /* NotificationView.swift */,
+			);
+			path = NotificationView;
+			sourceTree = "<group>";
+		};
+		653538AD2B29E1DD00F28729 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				653538AE2B29E1E700F28729 /* KeyboardHeightHelper.swift */,
+				653538B02B2A292400F28729 /* SFSymbols.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		65A8EA892B1BDB7600FB3C65 /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +132,7 @@
 				65A8EA882B1BD81F00FB3C65 /* Info.plist */,
 				65EB84532B1146E8000D5495 /* DataModel */,
 				65EB844A2B0E8C7C000D5495 /* ReusableViews */,
+				653538AD2B29E1DD00F28729 /* Helpers */,
 				65EB84362B0BA35A000D5495 /* CustomViews */,
 				65EB84312B0BA29A000D5495 /* Extensions */,
 				65EB842E2B0BA25B000D5495 /* Modules */,
@@ -158,6 +186,8 @@
 				65EB84342B0BA2D3000D5495 /* DateExtension.swift */,
 				65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */,
 				65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */,
+				653538AB2B27B4A100F28729 /* ViewExtension.swift */,
+				650B43A62B3C9D4E00BA2EF3 /* ArrayExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -165,6 +195,7 @@
 		65EB84362B0BA35A000D5495 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				650B43A82B3E34AB00BA2EF3 /* NotificationView */,
 				65EB846A2B1287EC000D5495 /* HabitView */,
 				65EB84392B0C05A5000D5495 /* GrassView */,
 			);
@@ -229,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				65EB84672B128785000D5495 /* HabitModel.swift */,
+				653538A92B279FCB00F28729 /* TabModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,7 +300,6 @@
 			);
 			name = HabitWay;
 			packageProductDependencies = (
-				65EB844E2B0F8A63000D5495 /* SFSymbolsPicker */,
 			);
 			productName = HabitWay;
 			productReference = 65EB841B2B0BA20B000D5495 /* HabitWay.app */;
@@ -299,7 +330,6 @@
 			);
 			mainGroup = 65EB84122B0BA20B000D5495;
 			packageReferences = (
-				65EB844D2B0F8A63000D5495 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
 			);
 			productRefGroup = 65EB841C2B0BA20B000D5495 /* Products */;
 			projectDirPath = "";
@@ -327,18 +357,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653538B12B2A292400F28729 /* SFSymbols.swift in Sources */,
 				65EB84682B128785000D5495 /* HabitModel.swift in Sources */,
 				65EB84332B0BA2AD000D5495 /* StringExtension.swift in Sources */,
+				650B43A72B3C9D4E00BA2EF3 /* ArrayExtension.swift in Sources */,
 				9693BF6E2B279E2F00FF25AD /* PaywallEntity.swift in Sources */,
 				96A7204D2B2F770D00A25B36 /* PaywallViewModel.swift in Sources */,
 				9693BF6C2B279D6E00FF25AD /* Paywall.swift in Sources */,
 				65EB84662B128778000D5495 /* AddHabitViewModel.swift in Sources */,
+				653538AF2B29E1E700F28729 /* KeyboardHeightHelper.swift in Sources */,
+				653538AC2B27B4A100F28729 /* ViewExtension.swift in Sources */,
 				65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */,
 				65EB84522B1146DC000D5495 /* HabitModel.xcdatamodeld in Sources */,
+				650B43AA2B3E34B300BA2EF3 /* NotificationView.swift in Sources */,
 				65EB843B2B0C05B0000D5495 /* GrassViewCell.swift in Sources */,
 				65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */,
 				65EB84352B0BA2D3000D5495 /* DateExtension.swift in Sources */,
 				65EB84212B0BA20B000D5495 /* HomeView.swift in Sources */,
+				653538AA2B279FCB00F28729 /* TabModel.swift in Sources */,
 				65EB84422B0CEE5A000D5495 /* ContainerView.swift in Sources */,
 				65EB84442B0CEE61000D5495 /* ContainerViewModel.swift in Sources */,
 				65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */,
@@ -482,10 +518,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitWay/Supporting Files/Preview Content\"";
-				DEVELOPMENT_TEAM = RGQUXDWRS8;
+				DEVELOPMENT_TEAM = S9YX4XA54Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitWay/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -494,8 +531,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = burakyilmaz.HabitWay;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = burakyilmazapp.HabitWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -512,10 +549,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitWay/Supporting Files/Preview Content\"";
-				DEVELOPMENT_TEAM = RGQUXDWRS8;
+				DEVELOPMENT_TEAM = S9YX4XA54Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HabitWay/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -524,8 +562,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = burakyilmaz.HabitWay;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = burakyilmazapp.HabitWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -556,25 +594,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		65EB844D2B0F8A63000D5495 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alessiorubicini/SFSymbolsPicker";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		65EB844E2B0F8A63000D5495 /* SFSymbolsPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65EB844D2B0F8A63000D5495 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
-			productName = SFSymbolsPicker;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		65EB84502B1146DC000D5495 /* HabitModel.xcdatamodeld */ = {

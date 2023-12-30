@@ -6,7 +6,11 @@
 //
 
 import Foundation
+
 final class PaywallViewModel: ObservableObject {
+    
+    @Published var selectedSubscription = SubscriptionData(title: "Monthly", description: "For short stays", price: "$4.99")
+    
     static let shared = PaywallViewModel()
     
     init() { }
@@ -20,8 +24,4 @@ final class PaywallViewModel: ObservableObject {
         SubscriptionData(title: "Yearly", description: "Best value for yearly plans", price: "$29.99"),
         SubscriptionData(title: "Lifetime", description: "One-time payment for a lifetime", price: "$99.99")
     ]
-    
-    
-    @Published var selectedSubscription = SubscriptionData(title: "Monthly", description: "For short stays", price: "$4.99")
-   
 }

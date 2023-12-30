@@ -8,74 +8,115 @@
 import SwiftUI
 
 struct Paywall: View {
+    
     @State private var showAllSubscriptions = false
-    @ObservedObject var paywallViewModel = PaywallViewModel.shared
     @State private var isAnimating = true
-
+    
+    @ObservedObject var paywallViewModel = PaywallViewModel.shared
     
     var body: some View {
         ZStack {
             VStack(spacing: showAllSubscriptions ? 2 : 8){
                 Spacer()
+                
                 HStack(alignment: .center) {
-                            ZStack(alignment: .center) {
-                                Image("wheat_wreath_left")
-                                    .resizable()
-                                    .frame(width: 80, height: 80)
-                                    .padding(.trailing,-20)
-
-                                Rectangle()
-                                    .fill(Color.white)
-                                    .frame(width: 80, height: 80)
-                                    .offset(y: isAnimating ? -80 : 0)
-                                    .animation(Animation.easeInOut(duration: 0.3).delay(0.3))
-                                    .opacity(showAllSubscriptions ? 0 : 1)
-
-                            }
-
-                            Text("Pro")
-                                .font(.system(size: 40))
-                                .foregroundColor(Color.black)
-                                .onTapGesture {
+                    ZStack(alignment: .center) {
+                        Image("wheat_wreath_left")
+                            .resizable()
+                            .frame(width: 40, height: 60)
+                        
+                        Rectangle()
+                            .fill(Color.white)
+                            .frame(width: 40, height: 60)
+                            .offset(y: isAnimating ? -60 : 0)
+                            .animation(.easeInOut(duration: 0.5))
+                            .opacity(showAllSubscriptions ? 0 : 1)
+                    }
+                    .padding(.trailing, -10)
+                    
+                    Text("Pro")
+                        .font(.system(size: 40))
+                        .foregroundColor(Color.black)
+                        .onTapGesture {
+                            withAnimation {
+                                isAnimating.toggle()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                     withAnimation {
                                         isAnimating.toggle()
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                            withAnimation {
-                                                isAnimating.toggle()
-                                            }
-                                        }                                    }
+                                    }
                                 }
-
-                            ZStack(alignment: .center) {
-                                Image("wheat_wreath_right")
-                                    .resizable()
-                                    .frame(width: 80, height: 80)
-                                    .padding(.leading,-20)
-
-                                Rectangle()
-                                    .fill(Color.white)
-                                    .frame(width: 80, height: 80)
-                                    .offset(y: isAnimating ? -80 : 0)
-                                    .animation(Animation.easeInOut(duration: 0.3).delay(0.3))
-                                    .opacity(showAllSubscriptions ? 0 : 1)
-
                             }
                         }
-                Text("Unlimited Cards")
-                    .font(.system(size: 24))
+                    
+                    ZStack(alignment: .center) {
+                        Image("wheat_wreath_right")
+                            .resizable()
+                            .frame(width: 40, height: 60)
+                        
+                        Rectangle()
+                            .fill(Color.white)
+                            .frame(width: 40, height: 60)
+                            .offset(y: isAnimating ? -60 : 0)
+                            .animation(.easeInOut(duration: 0.5))
+                            .opacity(showAllSubscriptions ? 0 : 1)
+                    }
+                    .padding(.leading, -10)
+                }
+                
+                Text("Unlimited habits")
+                    .font(.system(size: 20))
                     .foregroundColor(Color.black)
-                Text("Auto-transition")
-                    .font(.system(size: 24))
-                    .foregroundColor(Color.black)
-                Text("Multiple languages")
-                    .font(.system(size: 24))
-                    .foregroundColor(Color.black)
-                Text("AI Copilot")
-                    .font(.system(size: 24))
-                    .foregroundColor(Color.gray)
-                Text("Custom lists")
-                    .font(.system(size: 24))
-                    .foregroundColor(Color.gray)
+                
+                HStack {
+                    Text("Advanced insights")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color.gray)
+                    
+                    Rectangle()
+                        .fill(Color(red: 245/255, green: 245/255, blue: 245/255))
+                        .overlay(
+                            Text("Soon")
+                                .font(.system(size: 8, weight: .semibold))
+                            
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                        .frame(width: 30, height: 20)
+                }
+                
+                HStack {
+                    Text("Custom app icons")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color.gray)
+                        .frame(height: 20)
+                    
+                    Rectangle()
+                        .fill(Color(red: 245/255, green: 245/255, blue: 245/255))
+                        .overlay(
+                            Text("Soon")
+                                .font(.system(size: 8, weight: .semibold))
+                            
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                        .frame(width: 30, height: 20)
+                }
+                
+                HStack() {
+                    Text("Reminder notifications")
+                        .font(.system(size: 20))
+                        .foregroundColor(Color.gray)
+                        .frame(height: 20)
+                    
+                    Rectangle()
+                        .fill(Color(red: 245/255, green: 245/255, blue: 245/255))
+                        .overlay(
+                            Text("Soon")
+                                .font(.system(size: 8, weight: .semibold))
+                            
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+                        .frame(width: 30, height: 20)
+                }
+                
                 Spacer()
                 
                 if showAllSubscriptions {
@@ -120,13 +161,25 @@ struct Paywall: View {
                     .font(.system(size: 14))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)
+                
                 Text("Recurring billing - cancel any time")
                     .font(.system(size: 11))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)
                     .opacity(0.6)
-                    
-                
+            }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation {
+                    isAnimating.toggle()
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                withAnimation {
+                    isAnimating.toggle()
+                }
             }
         }
     }
@@ -138,8 +191,6 @@ struct SubscriptionData: Identifiable ,Hashable {
     var description: String
     var price: String
 }
-
-
 
 #Preview {
     Paywall()
