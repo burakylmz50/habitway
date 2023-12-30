@@ -160,14 +160,16 @@ struct AddHabitView: View {
                             .opacity(isKeyboardVisible ? 0 : 1)
                         
                         Button(action: {
-                            keyboardFocused = false
+                            if nameTextField.count > 2 {
+                                keyboardFocused = false
+                            }
                         }, label: {
                             Text("Add")
                                 .frame(width: 100, height: !isKeyboardVisible ? 0 : 30)
                                 .background(nameTextField.count > 2 ? .brand : .gray.opacity(0.2))
                                 .foregroundStyle(nameTextField.count > 2 ? .black.opacity(0.8) : .gray.opacity(0.5))
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                                .disabled(nameTextField.count < 3)
+                                .disabled(nameTextField.count < 2)
                                 .opacity(!isKeyboardVisible ? 0 : 1)
                         })
                         

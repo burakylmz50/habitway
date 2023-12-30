@@ -12,6 +12,7 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     @State private var isPresentedAddHabitView: Bool = false
+    @State private var isPresentedPaywall: Bool = false
     @State private var color: Color = .clear
     
     
@@ -81,10 +82,16 @@ struct HomeView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack {
                         Button("", systemImage: "star.square.on.square.fill") {
-
+                            isPresentedPaywall.toggle()
                         }
                         .tint(Color.brandColor)
                         .opacity(1)
+                        .sheet(isPresented: $isPresentedPaywall, onDismiss: {
+                           
+                        }) {
+                            Paywall()
+                            .presentationDetents([.large])
+                        }
                         
                         Button("", systemImage: "plus.circle.fill") {
                             isPresentedAddHabitView.toggle()

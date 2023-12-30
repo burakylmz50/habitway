@@ -13,13 +13,13 @@ struct NotificationView: View {
     @State var notification: NotificationModel?
     var body: some View {
         HStack {
-            Image(systemName: "checkmark")
-                .resizable()
-                .foregroundColor(isExpanded ? .green : .clear)
-                .frame(
-                    width: isExpanded ? 40 : 10,
-                    height: isExpanded ? 40 : 10
-                )
+//            Image(systemName: "checkmark")
+//                .resizable()
+//                .foregroundColor(isExpanded ? .green : .clear)
+//                .frame(
+//                    width: isExpanded ? 40 : 10,
+//                    height: isExpanded ? 40 : 10
+//                )
         }
         
         .frame(width: 130, height: isExpanded ? 130 : 37.33)
@@ -27,8 +27,8 @@ struct NotificationView: View {
         .opacity(isExpanded ? 1 : 0)
         .scaleEffect(isExpanded ? 1 : 0.5, anchor: .top)
         .background {
-            RoundedRectangle(cornerRadius: isExpanded ? 20 : 63, style: .continuous)
-                .fill(.black)
+//            RoundedRectangle(cornerRadius: isExpanded ? 20 : 63, style: .continuous)
+//                .fill(.black)
         }
         .clipped()
         .offset(y: 11)
