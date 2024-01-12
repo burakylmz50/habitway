@@ -9,11 +9,12 @@ import SwiftUI
 
 struct AddHabitView: View {
     
+    @Environment(\.dismiss) var dismiss
+    
     @ObservedObject var viewModel: AddHabitViewModel
     
     @ObservedObject var keyboardHeightHelper = KeyboardHeightHelper()
     
-    @Binding var isPresentedAddHabitView: Bool
     @Binding var color: Color
     
     @State private var isAddHabitSelector: Bool = false
@@ -115,7 +116,7 @@ struct AddHabitView: View {
                     Spacer()
                     
                     Button(action: {
-                        isPresentedAddHabitView = false
+                       dismiss()
                     }, label: {
                         Image(systemName: "chevron.down.circle.fill")
                             .resizable()
@@ -321,7 +322,7 @@ struct AddHabitView: View {
                     }
                     
                     Button {
-                        isPresentedAddHabitView = false
+                        dismiss()
                         
                         viewModel.addHabit(model: .init(
                             id: UUID(),
@@ -349,12 +350,6 @@ struct AddHabitView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             .background(.gray.opacity(0.1))
-        }
-        .navigationDestination(for: HomeRoute.self) { model in }
-        .sheet(isPresented: $isAddHabitSelector, onDismiss: {
-            // TODO: HandleDismiss
-        }) {
-            
         }
     }
     
@@ -400,6 +395,7 @@ struct AddHabitView: View {
 }
 
 struct SymbolsGridStyle: ViewModifier {
+    
     func body(content: Content) -> some View {
         content
             .aspectRatio(1, contentMode: .fill)
@@ -410,11 +406,9 @@ struct SymbolsGridStyle: ViewModifier {
 }
 
 struct SquareColorPickerView: View {
-    
     @Binding var colorValue: Color
     
     var body: some View {
-        
         colorValue
             .frame(width: 40, height: 40, alignment: .center)
             .cornerRadius(10.0)
@@ -429,8 +423,7 @@ struct SquareColorPickerView: View {
 
 #Preview {
     AddHabitView(
-        viewModel: AddHabitViewModel(),
-        isPresentedAddHabitView: .constant(true), color: .constant(.red)
+        viewModel: AddHabitViewModel(), color: .constant(.red)
     )
 }
 

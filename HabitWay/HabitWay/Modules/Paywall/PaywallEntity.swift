@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import RevenueCat
 
 struct PaywallEntity: View {
-    @State var entity : SubscriptionData
+    var package: Package
+    
     @Binding var showSubscriptions : Bool
-    @ObservedObject var paywallViewModel = PaywallViewModel.shared
+    @ObservedObject var paywallViewModel: PaywallViewModel
     
     var body: some View {
         Button {
             if showSubscriptions {
-                paywallViewModel.selectedSubscription = entity
+                paywallViewModel.selectedPackage = package
             }
             withAnimation {
                 showSubscriptions.toggle()
@@ -23,11 +25,14 @@ struct PaywallEntity: View {
         } label: {
             HStack(spacing: 0) {
                 VStack(alignment: .leading) {
-                    Text(entity.title)
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color.black)
-                    Text(entity.description)
+                    if let subscriptionPeriod = package.storeProduct.subscriptionPeriod {
+                        Text("\(subscriptionPeriod.unit)ly".capitalized)
+                            .font(.headline)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(Color.black)
+                    }
+
+                    Text(package.storeProduct.localizedTitle)
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color.black)
@@ -35,7 +40,7 @@ struct PaywallEntity: View {
                 }
                 .padding()
                 Spacer()
-                Text(entity.price)
+                Text(package.localizedPriceString)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)
                     .padding()
@@ -47,5 +52,3 @@ struct PaywallEntity: View {
         }
     }
 }
-
-

@@ -16,6 +16,12 @@
 		65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */; };
 		65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */; };
 		65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */; };
+		65D1C99B2B40BCB900F5274D /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 65D1C99A2B40BCB900F5274D /* RevenueCat */; };
+		65D1C99D2B40BCB900F5274D /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65D1C99C2B40BCB900F5274D /* RevenueCatUI */; };
+		65D1C9A02B40C07D00F5274D /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1C99F2B40C07D00F5274D /* SubscriptionManager.swift */; };
+		65D1C9A32B40DCC300F5274D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D1C9A22B40DCC300F5274D /* StoreKit.framework */; };
+		65D1C9A72B42D75700F5274D /* StoreKitTestCertificate.cer in Resources */ = {isa = PBXBuildFile; fileRef = 65D1C9A62B42D75700F5274D /* StoreKitTestCertificate.cer */; };
+		65D1C9A82B42E7BB00F5274D /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 65D1C9A42B42D6E300F5274D /* Configuration.storekit */; };
 		65EB841F2B0BA20B000D5495 /* HabitWayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB841E2B0BA20B000D5495 /* HabitWayApp.swift */; };
 		65EB84212B0BA20B000D5495 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EB84202B0BA20B000D5495 /* HomeView.swift */; };
 		65EB84232B0BA20D000D5495 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65EB84222B0BA20D000D5495 /* Assets.xcassets */; };
@@ -48,8 +54,13 @@
 		653538B02B2A292400F28729 /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		65A8EA882B1BD81F00FB3C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		65A8EA882B1BD81F00FB3C65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		65D1C99F2B40C07D00F5274D /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		65D1C9A22B40DCC300F5274D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		65D1C9A42B42D6E300F5274D /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		65D1C9A62B42D75700F5274D /* StoreKitTestCertificate.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = StoreKitTestCertificate.cer; path = ../../Desktop/StoreKitTestCertificate.cer; sourceTree = "<group>"; };
+		65D1C9A92B4C4A6600F5274D /* HabitWay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HabitWay.entitlements; sourceTree = "<group>"; };
 		65EB841B2B0BA20B000D5495 /* HabitWay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitWay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65EB841E2B0BA20B000D5495 /* HabitWayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitWayApp.swift; sourceTree = "<group>"; };
 		65EB84202B0BA20B000D5495 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -79,6 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D1C9A32B40DCC300F5274D /* StoreKit.framework in Frameworks */,
+				65D1C99D2B40BCB900F5274D /* RevenueCatUI in Frameworks */,
+				65D1C99B2B40BCB900F5274D /* RevenueCat in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,11 +124,30 @@
 			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
+		65D1C99E2B40C07600F5274D /* SubscriptionManager */ = {
+			isa = PBXGroup;
+			children = (
+				65D1C99F2B40C07D00F5274D /* SubscriptionManager.swift */,
+			);
+			path = SubscriptionManager;
+			sourceTree = "<group>";
+		};
+		65D1C9A12B40DCC300F5274D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65D1C9A22B40DCC300F5274D /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		65EB84122B0BA20B000D5495 = {
 			isa = PBXGroup;
 			children = (
+				65D1C9A42B42D6E300F5274D /* Configuration.storekit */,
+				65D1C9A62B42D75700F5274D /* StoreKitTestCertificate.cer */,
 				65EB841D2B0BA20B000D5495 /* HabitWay */,
 				65EB841C2B0BA20B000D5495 /* Products */,
+				65D1C9A12B40DCC300F5274D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,7 +162,8 @@
 		65EB841D2B0BA20B000D5495 /* HabitWay */ = {
 			isa = PBXGroup;
 			children = (
-				65A8EA882B1BD81F00FB3C65 /* Info.plist */,
+				65D1C9A92B4C4A6600F5274D /* HabitWay.entitlements */,
+				65D1C99E2B40C07600F5274D /* SubscriptionManager */,
 				65EB84532B1146E8000D5495 /* DataModel */,
 				65EB844A2B0E8C7C000D5495 /* ReusableViews */,
 				653538AD2B29E1DD00F28729 /* Helpers */,
@@ -161,6 +195,7 @@
 		65EB842D2B0BA245000D5495 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65A8EA882B1BD81F00FB3C65 /* Info.plist */,
 				65EB84222B0BA20D000D5495 /* Assets.xcassets */,
 				65EB84242B0BA20D000D5495 /* Preview Content */,
 			);
@@ -300,6 +335,8 @@
 			);
 			name = HabitWay;
 			packageProductDependencies = (
+				65D1C99A2B40BCB900F5274D /* RevenueCat */,
+				65D1C99C2B40BCB900F5274D /* RevenueCatUI */,
 			);
 			productName = HabitWay;
 			productReference = 65EB841B2B0BA20B000D5495 /* HabitWay.app */;
@@ -330,6 +367,7 @@
 			);
 			mainGroup = 65EB84122B0BA20B000D5495;
 			packageReferences = (
+				65D1C9992B40BCB900F5274D /* XCRemoteSwiftPackageReference "purchases-ios" */,
 			);
 			productRefGroup = 65EB841C2B0BA20B000D5495 /* Products */;
 			projectDirPath = "";
@@ -346,7 +384,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				65EB84262B0BA20D000D5495 /* Preview Assets.xcassets in Resources */,
+				65D1C9A82B42E7BB00F5274D /* Configuration.storekit in Resources */,
 				65EB84232B0BA20D000D5495 /* Assets.xcassets in Resources */,
+				65D1C9A72B42D75700F5274D /* StoreKitTestCertificate.cer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +399,7 @@
 			files = (
 				653538B12B2A292400F28729 /* SFSymbols.swift in Sources */,
 				65EB84682B128785000D5495 /* HabitModel.swift in Sources */,
+				65D1C9A02B40C07D00F5274D /* SubscriptionManager.swift in Sources */,
 				65EB84332B0BA2AD000D5495 /* StringExtension.swift in Sources */,
 				650B43A72B3C9D4E00BA2EF3 /* ArrayExtension.swift in Sources */,
 				9693BF6E2B279E2F00FF25AD /* PaywallEntity.swift in Sources */,
@@ -515,13 +556,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HabitWay/HabitWay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitWay/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = S9YX4XA54Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HabitWay/Info.plist;
+				INFOPLIST_FILE = "HabitWay/Supporting Files/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -535,6 +577,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = burakyilmazapp.HabitWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -546,13 +590,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HabitWay/HabitWay.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HabitWay/Supporting Files/Preview Content\"";
 				DEVELOPMENT_TEAM = S9YX4XA54Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HabitWay/Info.plist;
+				INFOPLIST_FILE = "HabitWay/Supporting Files/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -566,6 +611,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = burakyilmazapp.HabitWay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -594,6 +641,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65D1C9992B40BCB900F5274D /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.31.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65D1C99A2B40BCB900F5274D /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65D1C9992B40BCB900F5274D /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCat;
+		};
+		65D1C99C2B40BCB900F5274D /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65D1C9992B40BCB900F5274D /* XCRemoteSwiftPackageReference "purchases-ios" */;
+			productName = RevenueCatUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		65EB84502B1146DC000D5495 /* HabitModel.xcdatamodeld */ = {

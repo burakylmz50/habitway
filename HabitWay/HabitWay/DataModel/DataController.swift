@@ -13,19 +13,25 @@ final class DataController: ObservableObject {
     
     static let shared = DataController()
     
-    let container: NSPersistentContainer
+    let container: NSPersistentCloudKitContainer
     let context : NSManagedObjectContext
     
     var habits: [HabitModel] = []
     
     init() {
-        container = NSPersistentContainer(name: "HabitModel")
+        container = NSPersistentCloudKitContainer(name: "HabitModel")
         
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolve Error: \(error)")
             }
         }
+        
+//        let options = NSPersistentCloudKitContainerSchemaInitializationOptions()
+//        try? container.initializeCloudKitSchema(options: options)
+        
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         context = container.viewContext
     }
     
@@ -100,26 +106,6 @@ final class DataController: ObservableObject {
         } catch let error {
             print(error.localizedDescription)
         }
-//        do {
-//            let result = try context.fetch(fetchRequest)
-//            if result.count != 0 {
-//                if let managedObject = result[0] as? NSManagedObject {
-//                    for (value) in columns {
-//                        managedObject.setValue(value, forKey: "id")
-//                    }
-//                    do {
-//                        try context.save()
-//                        return true
-//                    }
-//                    catch let error {
-//                        print(error.localizedDescription)
-//                    }
-//                }
-//            }
-//            return false
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
         return false
     }
     

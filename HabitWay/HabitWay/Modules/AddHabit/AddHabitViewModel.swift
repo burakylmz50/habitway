@@ -14,12 +14,12 @@ enum AddHabitRoute : String , Hashable{
 
 final class AddHabitViewModel: ObservableObject {
     
-//    @Environment(\.managedObjectContext) var managedObjContext
+    //    @Environment(\.managedObjectContext) var managedObjContext
     
     
-//    @FetchRequest(sortDescriptors: [SortDescriptor(\., order: .reverse)]) 
-//    var habit: FetchedResults<HabitEntity>
-//    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \HabitModel.date, ascending: true)], animation: .default)
+    //    @FetchRequest(sortDescriptors: [SortDescriptor(\., order: .reverse)])
+    //    var habit: FetchedResults<HabitEntity>
+    //    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \HabitModel.date, ascending: true)], animation: .default)
     
     @FetchRequest(
         sortDescriptors: [

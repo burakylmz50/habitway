@@ -10,15 +10,30 @@ import CoreData
 
 enum HomeRoute : String , Hashable{
     case addHabit
+    case paywall
+}
+
+enum ActiveSheet: Identifiable {
+    case addHabit
+    case paywall
+    
+    var id: Int {
+        hashValue
+    }
 }
 
 final class HomeViewModel: ObservableObject {
+    
+    @Published var paywallViewModel: PaywallViewModel?
     
     @Environment(\.managedObjectContext) var managedObjContext
     @FetchRequest(sortDescriptors: [SortDescriptor(\.isUpdated, order: .reverse)]) var habit: FetchedResults<HabitEntity>
     
     @Published var navigationPath = NavigationPath()
+    @Published var isPresentedPaywall: Bool = false
     @Published var habits = [HabitModel]()
+    @Published var activeSheet: ActiveSheet?
+    @Published var isActive: Bool?
     
     var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
     
@@ -32,12 +47,24 @@ final class HomeViewModel: ObservableObject {
         print("\(self)) Deinitialized")
     }
     
+    func setup(paywallViewModel: PaywallViewModel) {
+        self.paywallViewModel = paywallViewModel
+      }
+    
     func getHabits() {
         habits = DataController.shared.getHabits()
     }
     
-    func addButton() {
-        navigationPath.append(HomeRoute.addHabit)
+    func addButton() { //TODO: isActive e göre iş yapılacak
+        if habits.count > 3 && !(paywallViewModel?.isActive ?? false) {
+            activeSheet = .paywall
+        } else {
+            activeSheet = .addHabit
+        }
+    }
+    
+    func paywallButton() {
+        activeSheet = .paywall
     }
     
     func removeHabit(habitModel: HabitModel) -> Bool {

@@ -9,13 +9,17 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject var paywallViewModel: PaywallViewModel
+    
     @ObservedObject var viewModel: HomeViewModel
     
     @State private var isPresentedAddHabitView: Bool = false
     @State private var isPresentedPaywall: Bool = false
     @State private var color: Color = .clear
     
-    
+    @State var isActive: Bool = false
+    @State var isLoading: Bool = false
+            
     var body: some View {
         NavigationStack(path: $viewModel.navigationPath) {
             ScrollView(.vertical) {
@@ -75,6 +79,11 @@ struct HomeView: View {
                 .padding()
                 .frame(maxWidth: .infinity)
             }
+            .overlay {
+                if paywallViewModel.isLoading {
+                    ProgressView("Loading")
+                }
+            }
             .background(Color.backgroundColor)
             .toolbarTitleDisplayMode(.large)
             .navigationTitle("Habits")
@@ -82,39 +91,41 @@ struct HomeView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack {
                         Button("", systemImage: "star.square.on.square.fill") {
-                            isPresentedPaywall.toggle()
+                            viewModel.paywallButton()
                         }
                         .tint(Color.brandColor)
-                        .opacity(1)
-                        .sheet(isPresented: $isPresentedPaywall, onDismiss: {
-                           
-                        }) {
-                            Paywall()
-                            .presentationDetents([.large])
-                        }
+                        .opacity(paywallViewModel.isActive ? 0:1)
                         
                         Button("", systemImage: "plus.circle.fill") {
-                            isPresentedAddHabitView.toggle()
+                            viewModel.addButton()
                         }
                         .tint(Color.brandColor)
-                        .sheet(isPresented: $isPresentedAddHabitView, onDismiss: {
-                            viewModel.getHabits()
-                        }) {
-                            AddHabitView(
-                                viewModel: AddHabitViewModel(),
-                                isPresentedAddHabitView: $isPresentedAddHabitView,
-                                color: $color
-                            )
-                            .presentationDetents([.large])
-                        }
                     }
                 }
             }
-            .navigationDestination(for: HomeRoute.self) { model in }
+            .sheet(item: $viewModel.activeSheet) {
+                // TODO: Handle Dismiss
+                viewModel.getHabits()
+            } content: { sheet in
+                switch sheet {
+                case .addHabit:
+                    AddHabitView(
+                        viewModel: AddHabitViewModel(),
+                        color: $color
+                    )
+                    .presentationDetents([.large])
+                case .paywall:
+                    Paywall(isActive: $isActive, isLoading: $isLoading)
+                        .environmentObject(paywallViewModel)
+                }
+            }
         }
         .onAppear {
+            viewModel.setup(paywallViewModel: paywallViewModel)
             viewModel.getHabits()
         }
+        .environmentObject(paywallViewModel)
+        .disabled(paywallViewModel.isLoading)
     }
 }
 
