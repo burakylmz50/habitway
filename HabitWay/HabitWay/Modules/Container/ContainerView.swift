@@ -17,7 +17,7 @@ struct ContainerView: View {
     private let dataController = DataController.shared
     
     init() {
-        Purchases.logLevel = .debug
+//        Purchases.logLevel = .debug
         Purchases.configure(withAPIKey: "appl_gwaLRxMtIMAyiDFNskVzLzqlhZp")
     }
     
