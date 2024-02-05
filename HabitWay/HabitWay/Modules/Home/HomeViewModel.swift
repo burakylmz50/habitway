@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import CoreData
+import Observation
 
 enum HomeRoute : String , Hashable{
     case addHabit
@@ -22,24 +22,22 @@ enum ActiveSheet: Identifiable {
     }
 }
 
-final class HomeViewModel: ObservableObject {
+@Observable
+final class HomeViewModel {
     
-    @Published var paywallViewModel: PaywallViewModel?
-    
-    @Environment(\.managedObjectContext) var managedObjContext
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.isUpdated, order: .reverse)]) var habit: FetchedResults<HabitEntity>
-    
-    @Published var navigationPath = NavigationPath()
-    @Published var isPresentedPaywall: Bool = false
-    @Published var habits = [HabitModel]()
-    @Published var activeSheet: ActiveSheet?
-    @Published var isActive: Bool?
+    var paywallViewModel: PaywallViewModel?
+    var isPresentedPaywall: Bool = false
+    var habits = [HabitModel]()
+    var activeSheet: ActiveSheet?
+    var isActive: Bool?
     
     var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
     
-    let container: ContainerViewModel
+    private let container: ContainerViewModel
+    private let dataController: DataController
     
-    init(container: ContainerViewModel) {
+    init(dataController: DataController = DataController.shared, container: ContainerViewModel) {
+        self.dataController = dataController
         self.container = container
     }
     
@@ -49,10 +47,10 @@ final class HomeViewModel: ObservableObject {
     
     func setup(paywallViewModel: PaywallViewModel) {
         self.paywallViewModel = paywallViewModel
-      }
+    }
     
     func getHabits() {
-        habits = DataController.shared.getHabits()
+        habits = DataController.shared.fetchHabits()
     }
     
     func addButton() { //TODO: isActive e göre iş yapılacak
@@ -67,28 +65,8 @@ final class HomeViewModel: ObservableObject {
         activeSheet = .paywall
     }
     
-    func removeHabit(habitModel: HabitModel) -> Bool {
-        DataController.shared.deleteEntityObjectByKeyValue(
-            entityName: HabitEntity.self,
-            key: "id",
-            value: habitModel.id
-        )
-    }
-    
-    func removeHabitDay(date: String) -> Bool {
-        let isRemoveHabitDay = DataController.shared.updateEntityObjectByKeyValue(
-            className: HabitEntity.self,
-            key: "date",
-            value: date,
-            columns: Array(arrayLiteral: date)
-        )
-        
-        if isRemoveHabitDay {
-            getHabits()
-            return true
-        } else {
-            return false
-        }
+    func removeHabit(habit: HabitModel) -> Bool {
+        dataController.deleteHabit(habit: habit)
     }
     
     func editHabit(habitModel: HabitModel) -> Bool {
@@ -102,29 +80,14 @@ final class HomeViewModel: ObservableObject {
             }
         }
         
-        let isUpdateEntity = DataController.shared.updateEntityObjectByKeyValue(
-            className: HabitEntity.self,
-            key: "id",
-            value: habitModel.id,
-            columns: dates
-        )
+        return DataController.shared.updateHabit(habit: habitModel, dates: dates)
         
-        if isUpdateEntity {
-            getHabits()
-            return true
-        } else {
-            return false
-        }
-    }
-}
-
-extension HomeViewModel {
-    
-    private func navigate(route: HomeRoute) {
-        navigationPath.append(route)
-    }
-    
-    private func pop() async {
-        navigationPath.removeLast()
+        
+//        if isUpdateEntity {
+//            getHabits()
+//            return true
+//        } else {
+//            return false
+//        }
     }
 }

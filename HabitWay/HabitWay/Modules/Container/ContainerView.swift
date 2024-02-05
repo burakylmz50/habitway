@@ -11,22 +11,16 @@ import RevenueCat
 struct ContainerView: View {
     
     @State private var isLaunchScreenViewPresented = true
-    @StateObject var viewModel = ContainerViewModel()
-    @StateObject var paywallViewModel = PaywallViewModel()
+    @State var viewModel = ContainerViewModel()
+    var paywallViewModel = PaywallViewModel()
     
     private let dataController = DataController.shared
-    
-    init() {
-//        Purchases.logLevel = .debug
-        Purchases.configure(withAPIKey: "appl_gwaLRxMtIMAyiDFNskVzLzqlhZp")
-    }
     
     var body: some View {
         if !isLaunchScreenViewPresented {
             NavigationStack(path: $viewModel.navigationPath) {
-                HomeView(viewModel: viewModel.homeViewModel)
-                    .environment(\.managedObjectContext, dataController.container.viewContext)
-                    .environmentObject(paywallViewModel)
+                HomeView(viewModel: viewModel.homeViewModel!)
+                    .environment(paywallViewModel)
             }
         } else {
             LaunchScreen(isPresented: $isLaunchScreenViewPresented)

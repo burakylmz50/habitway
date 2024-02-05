@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HabitView: View {
     
-    var isSelectedCurrentDay: Bool
+    @State var isSelectedCurrentDay: Bool = false
     
     var habitModel: HabitModel
     var action: (() -> Void)?
@@ -17,7 +17,6 @@ struct HabitView: View {
     init(habitModel: HabitModel, action: (() -> Void)? = nil) {
         self.habitModel = habitModel
         self.action = action
-        self.isSelectedCurrentDay = habitModel.date.contains(todayDate)
     }
     
     var todayDate = Date.now.toString(withFormat: "yyyy-MM-dd")
@@ -56,11 +55,12 @@ struct HabitView: View {
                     Spacer()
                     
                     Button(action: {
+                        isSelectedToday()
                         action?()
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .circular)
-                                .fill(isSelectedCurrentDay ? Color(hex: habitModel.hexColor)! : .gray.opacity(0.2))
+                                .fill(isSelectedCurrentDay ? Color(hex: habitModel.color)! : .gray.opacity(0.2))
                                 .frame(width: 30, height: 30)
                             
                             Image(systemName: "checkmark")
@@ -76,16 +76,24 @@ struct HabitView: View {
                     habitModel.date.toDictionary(),
                     row: 7,
                     col: 52,
-                    cellColor: Color(hex: "\(habitModel.hexColor)") ?? .gray
+                    cellColor: Color(hex: "\(habitModel.color)") ?? .gray
                 )
                 .padding([.leading, .trailing, .bottom], 5)
             }
         }
         .frame(height: 145)
+        .onAppear {
+            isSelectedToday()
+        }
+    }
+    
+    private func isSelectedToday() {
+        let date = habitModel.date
+        self.isSelectedCurrentDay = date.contains(todayDate)
     }
 }
 
 
 #Preview {
-    HabitView(habitModel: HabitModel(id: .init(), title: "name", subtitle: "description", date: ["2023-08-12"], hexColor: "$0000FF", icon: "plus.circle.fill"))
+    HabitView(habitModel: .init(color: "$0000FF", date: ["2023-08-12"], icon: "plus.circle.fill", subtitle: "description", title: "name"))
 }

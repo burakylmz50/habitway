@@ -56,5 +56,5 @@ extension View {
 }
 
 #Preview {
-    AddHabitView(viewModel: .init(), color: .constant(.red))
+    AddHabitView(color: .constant(.red), viewModel: .init())
 }

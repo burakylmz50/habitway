@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-class ContainerViewModel: ObservableObject {
+@Observable
+class ContainerViewModel {
     
-    @Published var navigationPath = NavigationPath()
+    var navigationPath = NavigationPath()
+    var homeViewModel: HomeViewModel?
     
-    init() { }
+    init() {
+        homeViewModel = .init(container: self)
+    }
     
     deinit {
         print("\(self)) Deinitialized")
     }
-    
-    lazy var homeViewModel = {
-        HomeViewModel(container: self)
-    }()
 }

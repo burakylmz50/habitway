@@ -12,7 +12,7 @@ struct PaywallEntity: View {
     var package: Package
     
     @Binding var showSubscriptions : Bool
-    @ObservedObject var paywallViewModel: PaywallViewModel
+    var paywallViewModel: PaywallViewModel
     
     var body: some View {
         Button {

@@ -10,34 +10,22 @@ import SwiftUI
 struct AddHabitView: View {
     
     @Environment(\.dismiss) var dismiss
-    
-    @ObservedObject var viewModel: AddHabitViewModel
-    
-    @ObservedObject var keyboardHeightHelper = KeyboardHeightHelper()
+    @Environment(\.colorScheme) private var scheme
     
     @Binding var color: Color
     
-    @State private var isAddHabitSelector: Bool = false
-    @State private var nameTextField = ""
-    @State private var descriptionTextField = ""
-    
-    @FocusState private var focusedField: String?
-    
-    @State private var icon = "star.fill"
-    @State private var isPresented = false
-    
-    @State var tabSelectedValue: TabModel?
-    @Environment(\.colorScheme) private var scheme
-    
-    @State private var tabProgress: CGFloat = 0
-    
-    @State var selectedColorIndex: Int?
-    @State var selectedIcon: String?
-    
-    @State private var isKeyboardVisible = true
-    
     @FocusState private var keyboardFocused: Bool
     
+    @State private var nameTextField = ""
+    @State private var descriptionTextField = ""
+    @State private var icon = "star.fill"
+    @State private var tabSelectedValue: TabModel?
+    @State private var tabProgress: CGFloat = 0
+    @State private var selectedColorIndex: Int?
+    @State private var selectedIcon: String?
+    @State private var isKeyboardVisible = true
+    
+    @State var viewModel: AddHabitViewModel
     
     private let symbolsColumns = [
         GridItem(.flexible()),
@@ -108,7 +96,7 @@ struct AddHabitView: View {
     ]
     
     var body: some View {
-        NavigationStack(path: $viewModel.navigationPath) {
+        NavigationStack {
             
             VStack(spacing: 15) {
                 
@@ -324,13 +312,12 @@ struct AddHabitView: View {
                     Button {
                         dismiss()
                         
-                        viewModel.addHabit(model: .init(
-                            id: UUID(),
-                            title: nameTextField,
-                            subtitle: descriptionTextField,
+                        viewModel.addHabit(habit: .init(
+                            color: colors[selectedColorIndex ?? 0].toHex() ?? "$0000FF",
                             date: [""],
-                            hexColor: colors[selectedColorIndex ?? 0].toHex() ?? "$0000FF",
-                            icon: selectedIcon ?? "AppIcon"
+                            icon: selectedIcon ?? "AppIcon",
+                            subtitle: descriptionTextField,
+                            title: nameTextField
                         ))
                     } label: {
                         Text("Save")
@@ -422,9 +409,7 @@ struct SquareColorPickerView: View {
 }
 
 #Preview {
-    AddHabitView(
-        viewModel: AddHabitViewModel(), color: .constant(.red)
-    )
+    AddHabitView(color: .constant(.red), viewModel: .init())
 }
 
 

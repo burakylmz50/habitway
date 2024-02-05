@@ -6,36 +6,26 @@
 //
 
 import SwiftUI
-import CoreData
+import Observation
 
-enum AddHabitRoute : String , Hashable{
-    case addHabit2
-}
+@Observable
+final class AddHabitViewModel {
+    
+    var habits: [HabitModel] = []
+    
+    private let dataController: DataController
 
-final class AddHabitViewModel: ObservableObject {
-    
-    //    @Environment(\.managedObjectContext) var managedObjContext
-    
-    
-    //    @FetchRequest(sortDescriptors: [SortDescriptor(\., order: .reverse)])
-    //    var habit: FetchedResults<HabitEntity>
-    //    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \HabitModel.date, ascending: true)], animation: .default)
-    
-    @FetchRequest(
-        sortDescriptors: [
-            SortDescriptor(\HabitEntity.id, order: .reverse)
-        ]
-    ) var users: FetchedResults<HabitEntity>
-    
-    @Published var navigationPath = NavigationPath()
-    
-    init() { }
+    init(dataController: DataController = DataController.shared) {
+        self.dataController = dataController
+    }
     
     deinit {
         print("\(self)) Deinitialized")
     }
     
-    func addHabit(model: HabitModel) {
-        DataController.shared.addHabit(model: model)
+    func addHabit(habit: HabitModel) {
+        dataController.createHabit(habit: habit)
+        
+        habits = dataController.fetchHabits()
     }
 }

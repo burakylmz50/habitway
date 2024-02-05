@@ -10,6 +10,8 @@ import RevenueCat
 
 struct Paywall: View {
     
+    var viewModel = PaywallViewModel()
+    
     @Environment(\.dismiss) var dismiss
     
     @State private var showAllSubscriptions = false
@@ -18,7 +20,6 @@ struct Paywall: View {
     @Binding var isActive: Bool
     @Binding var isLoading: Bool
 
-    @EnvironmentObject var viewModel: PaywallViewModel
     
     var body: some View {
         ZStack {

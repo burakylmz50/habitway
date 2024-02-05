@@ -8,19 +8,18 @@
 import Foundation
 import RevenueCat
 
-@MainActor
-final class PaywallViewModel: ObservableObject {
+@Observable
+final class PaywallViewModel {
     
-    @Published var currentOffering: Offering?
+    var currentOffering: Offering?
     var selectedPackage: Package?
-    
-    @Published var isActive: Bool = false
-    
-    @Published var isPresentedPaywallView: Bool = false
-    
-    @Published var isLoading = true
+    var isActive: Bool = false
+    var isPresentedPaywallView: Bool = false
+    var isLoading = true
     
     init() {
+        Purchases.configure(withAPIKey: "appl_gwaLRxMtIMAyiDFNskVzLzqlhZp")
+        
         Task {
             do {
                 try await getOfferings()

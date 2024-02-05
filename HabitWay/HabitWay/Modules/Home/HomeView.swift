@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HomeView: View {
+        
+    @Environment(PaywallViewModel.self) var paywallViewModel
     
-    @EnvironmentObject var paywallViewModel: PaywallViewModel
-    
-    @ObservedObject var viewModel: HomeViewModel
+    @State var viewModel: HomeViewModel
     
     @State private var isPresentedAddHabitView: Bool = false
     @State private var isPresentedPaywall: Bool = false
@@ -19,9 +19,9 @@ struct HomeView: View {
     
     @State var isActive: Bool = false
     @State var isLoading: Bool = false
-            
+    
     var body: some View {
-        NavigationStack(path: $viewModel.navigationPath) {
+        NavigationStack {
             ScrollView(.vertical) {
                 HStack {
                     Text(Date().toString(withFormat: "dd MMMM"))
@@ -33,39 +33,25 @@ struct HomeView: View {
                 }
                 .padding(.leading)
                 VStack {
-                    if !$viewModel.habits.isEmpty {
-                        ForEach($viewModel.habits, id: \.id) { $habit in
+                    if !viewModel.habits.isEmpty {
+                        ForEach(viewModel.habits, id: \.id) { habit in
                             HomeGrassView(habitModel: habit, action: {
-                                if viewModel.editHabit(habitModel: habit) {
-                                    NotificationCenter.default.post(
-                                        name: .init("NOTIFY"),
-                                        object: NotificationModel(
-                                            title: "Dynamic Island",
-                                            content: "This is an example 😍"
-                                        )
-                                    )
-                                }
+                                 if viewModel.editHabit(habitModel: habit) {
+                                     viewModel.getHabits()
+                                 }
                             })
                             .contextMenu {
                                 Button {
                                     DispatchQueue.main.async {
                                         withAnimation {
-                                            if viewModel.removeHabit(habitModel: habit) {
+                                            if viewModel.removeHabit(habit: habit) {
                                                 viewModel.getHabits()
-                                                
-                                                NotificationCenter.default.post(
-                                                    name: .init("NOTIFY"),
-                                                    object: NotificationModel(
-                                                        title: "Dynamic Island",
-                                                        content: "This is an example 😍"
-                                                    )
-                                                )
                                             }
                                         }
                                         
                                     }
                                 } label: {
-                                    Label("Delete", systemImage: "trash")
+                                    Label("Delete Habit", systemImage: "trash")
                                 }
                             }
                             
@@ -80,9 +66,9 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity)
             }
             .overlay {
-                if paywallViewModel.isLoading {
-                    ProgressView("Loading")
-                }
+                //                if paywallViewModel.isLoading {
+                //                    ProgressView("Loading")
+                //                }
             }
             .background(Color.backgroundColor)
             .toolbarTitleDisplayMode(.large)
@@ -104,19 +90,16 @@ struct HomeView: View {
                 }
             }
             .sheet(item: $viewModel.activeSheet) {
-                // TODO: Handle Dismiss
                 viewModel.getHabits()
             } content: { sheet in
                 switch sheet {
                 case .addHabit:
                     AddHabitView(
-                        viewModel: AddHabitViewModel(),
-                        color: $color
+                        color: $color, viewModel: AddHabitViewModel()
                     )
                     .presentationDetents([.large])
                 case .paywall:
                     Paywall(isActive: $isActive, isLoading: $isLoading)
-                        .environmentObject(paywallViewModel)
                 }
             }
         }
@@ -124,7 +107,6 @@ struct HomeView: View {
             viewModel.setup(paywallViewModel: paywallViewModel)
             viewModel.getHabits()
         }
-        .environmentObject(paywallViewModel)
         .disabled(paywallViewModel.isLoading)
     }
 }
