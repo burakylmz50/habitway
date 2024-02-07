@@ -25,7 +25,7 @@ struct HabitView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 5)
                 .fill(Color.habitViewBackground)
-        
+            
             VStack(spacing: 0) {
                 HStack {
                     ZStack {
@@ -38,8 +38,6 @@ struct HabitView: View {
                             .frame(width: 20, height: 20)
                             .imageScale(.large)
                             .foregroundStyle(.white)
-//                            .scaledToFit()
-                        
                     } // Left Button
                     .padding([.leading], 5)
                     
@@ -72,6 +70,7 @@ struct HabitView: View {
                         }
                         .padding([.trailing], 5)
                     }) // Right Button
+                    .sensoryFeedback(.selection, trigger: isSelectedCurrentDay)
                 }
                 
                 GrassView(
