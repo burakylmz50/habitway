@@ -10,7 +10,7 @@ import RevenueCat
 
 struct Paywall: View {
     
-    var viewModel = PaywallViewModel()
+    var viewModel: PaywallViewModel
     
     @Environment(\.dismiss) var dismiss
     
@@ -198,9 +198,6 @@ struct Paywall: View {
                     
                     Button(action: {
                         viewModel.getRestorePurchases()
-//                        Task {
-//                            try await
-//                        }
                     }, label: {
                         Text("Restore Purchases")
                             .font(.system(size: 14))
@@ -262,7 +259,7 @@ struct Paywall: View {
 }
 
 #Preview {
-    Paywall(isActive: .constant(true), isLoading: .constant(true))
+    Paywall(viewModel: .init(), isActive: .constant(true), isLoading: .constant(true))
 }
 
 extension View {

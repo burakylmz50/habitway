@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-        
-    @Environment(PaywallViewModel.self) var paywallViewModel
+    
+//    @Environment(PaywallViewModel.self) var paywallViewModel
     
     @State var viewModel: HomeViewModel
+    @State var paywallViewModel: PaywallViewModel
     
     @State private var isPresentedAddHabitView: Bool = false
     @State private var isPresentedPaywall: Bool = false
@@ -21,93 +22,80 @@ struct HomeView: View {
     @State var isLoading: Bool = false
     
     var body: some View {
-        NavigationStack {
-            ScrollView(.vertical) {
-                HStack {
-                    Text(Date().toString(withFormat: "dd MMMM"))
-                        .font(.title)
-                        .foregroundStyle(.gray.opacity(0.4))
-                        .bold()
-                    
-                    Spacer()
-                }
-                .padding(.leading)
-                VStack {
-                    if !viewModel.habits.isEmpty {
-                        ForEach(viewModel.habits, id: \.id) { habit in
-                            HomeGrassView(habitModel: habit, action: {
-                                 if viewModel.editHabit(habitModel: habit) {
-                                     viewModel.getHabits()
-                                 }
-                            })
-                            .contextMenu {
-                                Button {
-                                    DispatchQueue.main.async {
-                                        withAnimation {
-                                            if viewModel.removeHabit(habit: habit) {
-                                                viewModel.getHabits()
-                                            }
-                                        }
-                                        
+        List {
+            HomeHeaderView()
+                .listRowSeparator(.hidden)
+                .listRowInsets(.init(top: 0, leading: 16, bottom: 0, trailing: 0))
+            
+            if !viewModel.habits.isEmpty {
+                ForEach(viewModel.habits, id: \.id) { habit in
+                    HomeGrassView(habitModel: habit, action: {
+                        viewModel.editHabit(habitModel: habit)
+                    })
+                    .background(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .buttonStyle(PlainButtonStyle())
+                    .contextMenu {
+                        Button {
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    if viewModel.removeHabit(habit: habit) {
+                                        viewModel.getHabits()
                                     }
-                                } label: {
-                                    Label("Delete Habit", systemImage: "trash")
                                 }
+                                
                             }
-                            
-                            Spacer(minLength: 20)
+                        } label: {
+                            Label("Delete Habit", systemImage: "trash")
                         }
-                        .id(UUID())
-                    } else {
-                        ContentUnavailableView()
                     }
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
+            } else {
+                ContentUnavailableView()
+                    .listRowSeparator(.hidden)
             }
-            .overlay {
-                //                if paywallViewModel.isLoading {
-                //                    ProgressView("Loading")
-                //                }
-            }
-            .background(Color.backgroundColor)
-            .toolbarTitleDisplayMode(.large)
-            .navigationTitle("Habits")
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    HStack {
-                        Button("", systemImage: "star.square.on.square.fill") {
-                            viewModel.paywallButton()
-                        }
-                        .tint(Color.brandColor)
-                        .opacity(paywallViewModel.isActive ? 0:1)
-                        
-                        Button("", systemImage: "plus.circle.fill") {
-                            viewModel.addButton()
-                        }
-                        .tint(Color.brandColor)
+        }
+        .navigationTitle("Habits")
+        .listStyle(.plain)
+        .overlay {
+             if paywallViewModel.isLoading {
+                 ProgressView("Loading")
+             }
+        }
+//        .background(Color.backgroundColor)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                HStack {
+                    Button("", systemImage: "star.square.on.square.fill") {
+                        viewModel.paywallButton()
                     }
+                    .tint(Color.brandColor)
+                    .opacity(paywallViewModel.isActive ? 0:1)
+                    
+                    Button("", systemImage: "plus.circle.fill") {
+                        viewModel.addButton()
+                    }
+                    .tint(Color.brandColor)
                 }
             }
-            .sheet(item: $viewModel.activeSheet) {
-                viewModel.getHabits()
-            } content: { sheet in
-                switch sheet {
-                case .addHabit:
-                    AddHabitView(
-                        color: $color, viewModel: AddHabitViewModel()
-                    )
-                    .presentationDetents([.large])
-                case .paywall:
-                    Paywall(isActive: $isActive, isLoading: $isLoading)
-                }
+        }
+        .sheet(item: $viewModel.activeSheet) {
+            viewModel.getHabits()
+        } content: { sheet in
+            switch sheet {
+            case .addHabit:
+                AddHabitView(
+                    color: $color, viewModel: AddHabitViewModel()
+                )
+                .presentationDetents([.large])
+            case .paywall:
+                Paywall(viewModel: paywallViewModel, isActive: $isActive, isLoading: $isLoading)
             }
         }
         .onAppear {
             viewModel.setup(paywallViewModel: paywallViewModel)
             viewModel.getHabits()
         }
-        .disabled(paywallViewModel.isLoading)
     }
 }
 
@@ -139,5 +127,5 @@ extension HomeView {
 }
 
 #Preview {
-    HomeView(viewModel: HomeViewModel(container: ContainerViewModel()))
+    HomeView(viewModel: HomeViewModel(container: ContainerViewModel()), paywallViewModel: .init())
 }

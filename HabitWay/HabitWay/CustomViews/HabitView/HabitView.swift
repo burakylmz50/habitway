@@ -36,8 +36,9 @@ struct HabitView: View {
                         Image(systemName: habitModel.icon)
                             .resizable()
                             .frame(width: 20, height: 20)
+                            .imageScale(.large)
                             .foregroundStyle(.white)
-                            .scaledToFit()
+//                            .scaledToFit()
                         
                     } // Left Button
                     .padding([.leading], 5)
@@ -55,8 +56,8 @@ struct HabitView: View {
                     Spacer()
                     
                     Button(action: {
-                        isSelectedToday()
                         action?()
+                        isSelectedToday()
                     }, label: {
                         ZStack {
                             RoundedRectangle(cornerSize: CGSize(width: 5, height: 5), style: .circular)
@@ -66,7 +67,8 @@ struct HabitView: View {
                             Image(systemName: "checkmark")
                                 .resizable()
                                 .frame(width: 20, height: 20)
-                                .foregroundStyle(.brand)
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundStyle(isSelectedCurrentDay ? .white : .brand)
                         }
                         .padding([.trailing], 5)
                     }) // Right Button

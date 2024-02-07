@@ -136,6 +136,7 @@ struct AddHabitView: View {
                             .font(.title)
                             .frame(alignment: .center)
                             .multilineTextAlignment(.center)
+                            .autocorrectionDisabled()
                             .focused($keyboardFocused)
                             .onAppear {
                                 keyboardFocused = true

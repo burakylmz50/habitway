@@ -12,15 +12,17 @@ struct ContainerView: View {
     
     @State private var isLaunchScreenViewPresented = true
     @State var viewModel = ContainerViewModel()
-    var paywallViewModel = PaywallViewModel()
+    @State var paywallViewModel = PaywallViewModel()
     
     private let dataController = DataController.shared
     
     var body: some View {
         if !isLaunchScreenViewPresented {
             NavigationStack(path: $viewModel.navigationPath) {
-                HomeView(viewModel: viewModel.homeViewModel!)
-                    .environment(paywallViewModel)
+                HomeView(
+                    viewModel: viewModel.homeViewModel!,
+                    paywallViewModel: paywallViewModel
+                )
             }
         } else {
             LaunchScreen(isPresented: $isLaunchScreenViewPresented)

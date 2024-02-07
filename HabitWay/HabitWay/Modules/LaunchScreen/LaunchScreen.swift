@@ -30,11 +30,11 @@ struct LaunchScreen: View {
         }
         .opacity(opacity)
         .onAppear {
-            withAnimation(.easeInOut(duration: 1.5)) {
-                scale = CGSize(width: 1, height: 1)
+            withAnimation(.easeInOut(duration: 4)) {
+                scale = CGSize(width: 200, height: 200)
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.4, execute: {
                 withAnimation(.easeIn(duration: 0)) {
                     isPresented.toggle()
                 }

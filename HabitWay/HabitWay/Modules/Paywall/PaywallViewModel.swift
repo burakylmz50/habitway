@@ -42,9 +42,9 @@ final class PaywallViewModel {
             if let selectedPackage = selectedPackage {
                 let purchase =  try await Purchases.shared.purchase(package: selectedPackage)
                 isLoading = false
+                isPresentedPaywallView = true
                 if purchase.customerInfo.entitlements.all["Pro"]?.isActive == true {
                     isActive = true
-                    isPresentedPaywallView = true
                 } else {
                     isActive = false
                 }
@@ -62,7 +62,7 @@ final class PaywallViewModel {
                 // Başarılı bir şekilde active edildi. // Dismiss olması lazım
                 isActive = true
             }
-            if let error = error {
+            if let _ = error {
                 isActive = false
             }
         }

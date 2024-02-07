@@ -44,11 +44,10 @@ final class DataController {
         return true
     }
     
-    func updateHabit(habit: HabitModel, dates: [String]) -> Bool {
-        guard let habit = fetchHabits().first(where: { $0.id == habit.id }) else { return false }
+    func updateHabit(habit: HabitModel, dates: [String]) {
+        guard let habit = fetchHabits().first(where: { $0.id == habit.id }) else { return }
        
         habit.date = dates
-        return true
     }
     
     func deleteAllHabits() {
@@ -56,13 +55,6 @@ final class DataController {
             try modelContext.delete(model: HabitModel.self)
         } catch {
             fatalError(error.localizedDescription)
-        }
-    }
-    
-    func updateObject(habit: HabitModel, dates: [String]) {
-        if let habit = fetchHabits().first(where: { $0.id == habit.id }) {
-            var date = habit.date
-            date.append(contentsOf: dates)
         }
     }
 }

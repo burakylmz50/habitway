@@ -53,7 +53,7 @@ final class HomeViewModel {
         habits = DataController.shared.fetchHabits()
     }
     
-    func addButton() { //TODO: isActive e göre iş yapılacak
+    func addButton() {
         if habits.count > 3 && !(paywallViewModel?.isActive ?? false) {
             activeSheet = .paywall
         } else {
@@ -69,7 +69,7 @@ final class HomeViewModel {
         dataController.deleteHabit(habit: habit)
     }
     
-    func editHabit(habitModel: HabitModel) -> Bool {
+    func editHabit(habitModel: HabitModel) {
         var dates = habitModel.date
         
         if !dates.contains(todayDate) {
@@ -80,14 +80,6 @@ final class HomeViewModel {
             }
         }
         
-        return DataController.shared.updateHabit(habit: habitModel, dates: dates)
-        
-        
-//        if isUpdateEntity {
-//            getHabits()
-//            return true
-//        } else {
-//            return false
-//        }
+        DataController.shared.updateHabit(habit: habitModel, dates: dates)
     }
 }
