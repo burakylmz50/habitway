@@ -70,7 +70,7 @@ struct HabitView: View {
                         }
                         .padding([.trailing], 5)
                     }) // Right Button
-                    .sensoryFeedback(.selection, trigger: isSelectedCurrentDay)
+                    .sensoryFeedback(.success, trigger: isSelectedCurrentDay)
                 }
                 
                 GrassView(
