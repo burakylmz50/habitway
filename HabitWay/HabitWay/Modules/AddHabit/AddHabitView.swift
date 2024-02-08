@@ -39,9 +39,7 @@ struct AddHabitView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
+        GridItem(.flexible())
     ]
     
     var colors: [Color] = [
@@ -208,6 +206,8 @@ struct AddHabitView: View {
                                                         }
                                                         .onTapGesture {
                                                             selectedIcon = emoji
+                                                            
+                                                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                                         }
                                                         .modifier(SymbolsGridStyle())
                                                     
@@ -238,6 +238,8 @@ struct AddHabitView: View {
                                                 .aspectRatio(contentMode: .fill)
                                                 .onTapGesture {
                                                     selectedColorIndex = index
+                                                    
+                                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                                 }
                                                 .overlay(
                                                     Circle()
@@ -252,7 +254,6 @@ struct AddHabitView: View {
                                                             )
                                                         )
                                                         .frame(width: 60, height: 60)
-                                                    
                                                 )
                                         }
                                     }
