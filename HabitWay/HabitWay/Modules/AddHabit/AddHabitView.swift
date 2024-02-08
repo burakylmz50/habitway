@@ -68,7 +68,7 @@ struct AddHabitView: View {
                     Spacer()
                     
                     Button(action: {
-                       dismiss()
+                        dismiss()
                     }, label: {
                         Image(systemName: "chevron.down.circle.fill")
                             .resizable()
@@ -354,22 +354,6 @@ struct SymbolsGridStyle: ViewModifier {
             .cornerRadius(10)
             .aspectRatio(contentMode: .fit)
             .foregroundStyle(.gray.opacity(0.1))
-    }
-}
-
-struct SquareColorPickerView: View {
-    @Binding var colorValue: Color
-    
-    var body: some View {
-        colorValue
-            .frame(width: 40, height: 40, alignment: .center)
-            .cornerRadius(10.0)
-            .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(Color.white, style: StrokeStyle(lineWidth: 5)))
-            .padding(10)
-            .background(AngularGradient(gradient: Gradient(colors: [.red,.yellow,.green,.blue,.purple,.pink]), center:.center).cornerRadius(20.0))
-            .overlay(ColorPicker("", selection: $colorValue).labelsHidden().opacity(0.015))
-            .shadow(radius: 5.0)
-        
     }
 }
 
