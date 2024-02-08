@@ -376,5 +376,3 @@ struct SquareColorPickerView: View {
 #Preview {
     AddHabitView(color: .constant(.red), viewModel: .init())
 }
-
-

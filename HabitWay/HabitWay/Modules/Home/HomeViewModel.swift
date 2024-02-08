@@ -54,7 +54,7 @@ final class HomeViewModel {
     }
     
     func addButton() {
-        if habits.count > 3 && !(paywallViewModel?.isActive ?? false) {
+        if habits.count > 2 && !(paywallViewModel?.isActive ?? false) {
             activeSheet = .paywall
         } else {
             activeSheet = .addHabit
