@@ -26,21 +26,20 @@ struct PaywallEntity: View {
             HStack(spacing: 0) {
                 VStack(alignment: .leading) {
                     Text(package.storeProduct.localizedTitle)
-                        .font(.headline)
-                        .multilineTextAlignment(.center)
+                        .font(.system(size: 14, weight: .semibold))
                         .foregroundColor(Color.black)
                     
                     Text(package.storeProduct.localizedDescription)
-                        .font(.subheadline)
-                        .multilineTextAlignment(.center)
+                        .font(.system(size: 12, weight: .light))
+                        .multilineTextAlignment(.leading)
                         .foregroundColor(Color.black)
-                        .opacity(0.6)
                 }
                 .padding()
                 
                 Spacer()
                 
                 Text(package.localizedPriceString)
+                    .font(.system(size: 15, weight: .regular))
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)
                     .padding()
