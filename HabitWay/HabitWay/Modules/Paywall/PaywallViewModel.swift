@@ -59,7 +59,6 @@ final class PaywallViewModel {
             isLoading = false
             if let customerInfo = customerInfo, let product = customerInfo.entitlements.all["Pro"],
                product.isActive {
-                // Başarılı bir şekilde active edildi. // Dismiss olması lazım
                 isActive = true
             }
             if let _ = error {

@@ -25,21 +25,21 @@ struct PaywallEntity: View {
         } label: {
             HStack(spacing: 0) {
                 VStack(alignment: .leading) {
-                    if let subscriptionPeriod = package.storeProduct.subscriptionPeriod {
-                        Text("\(subscriptionPeriod.unit)ly".capitalized)
-                            .font(.headline)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color.black)
-                    }
-
                     Text(package.storeProduct.localizedTitle)
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color.black)
+                    
+                    Text(package.storeProduct.localizedDescription)
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color.black)
                         .opacity(0.6)
                 }
                 .padding()
+                
                 Spacer()
+                
                 Text(package.localizedPriceString)
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.black)

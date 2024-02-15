@@ -4,13 +4,27 @@
 
   ],
   "products" : [
-
+    {
+      "displayPrice" : "49.99",
+      "familyShareable" : false,
+      "internalID" : "6477970814",
+      "localizations" : [
+        {
+          "description" : "One-time payment, lifetime access.",
+          "displayName" : "Lifetime",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.burakyilmazapp.HabitWay.lifetime",
+      "referenceName" : "Lifetime",
+      "type" : "NonConsumable"
+    }
   ],
   "settings" : {
     "_applicationInternalID" : "6475177457",
     "_developerTeamID" : "S9YX4XA54Z",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 725841346.03651798,
+    "_lastSynchronizedDate" : 729730171.30908096,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -76,46 +90,21 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "1.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "6475177541",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "Get access to the features we have specified.",
-              "displayName" : "Habitway one week full access",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "burakyilmaz.HabitWay.weekly",
-          "recurringSubscriptionPeriod" : "P1W",
-          "referenceName" : " weekly",
-          "subscriptionGroupID" : "21428499",
-          "type" : "RecurringSubscription"
-        },
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
           "displayPrice" : "5.99",
           "familyShareable" : false,
-          "groupNumber" : 2,
-          "internalID" : "6475177542",
+          "groupNumber" : 6,
+          "internalID" : "6477970833",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Get access to the features we have specified.",
-              "displayName" : "Habitway one month full access",
+              "description" : "Save on cost, monthly updated content.",
+              "displayName" : "Annual",
               "locale" : "en_US"
             }
           ],
-          "productID" : "burakyilmaz.HabitWay.monthly",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "monthly",
+          "productID" : "com.burakyilmazapp.HabitWay.annual",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Annual",
           "subscriptionGroupID" : "21428499",
           "type" : "RecurringSubscription"
         },
@@ -126,21 +115,21 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "49.99",
+          "displayPrice" : "0.99",
           "familyShareable" : false,
-          "groupNumber" : 3,
-          "internalID" : "6475177428",
+          "groupNumber" : 5,
+          "internalID" : "6477970738",
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Get access to the features we have specified.",
-              "displayName" : "Habitway one year full access",
+              "description" : "Unlimited access for a month.",
+              "displayName" : "Monthly",
               "locale" : "en_US"
             }
           ],
-          "productID" : "burakyilmaz.HabitWay.yearly",
-          "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "yearly",
+          "productID" : "com.burakyilmazapp.HabitWay.monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly",
           "subscriptionGroupID" : "21428499",
           "type" : "RecurringSubscription"
         }
