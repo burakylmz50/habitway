@@ -18,3 +18,15 @@ extension String {
         return date
     }
 }
+
+extension String {
+    
+    func isEmoji() -> Bool {
+        for scalar in self.unicodeScalars {
+            if scalar.properties.isEmoji {
+                return true
+            }
+        }
+        return false
+    }
+}

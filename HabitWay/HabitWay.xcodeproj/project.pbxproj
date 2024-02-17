@@ -15,6 +15,7 @@
 		653538B12B2A292400F28729 /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653538B02B2A292400F28729 /* SFSymbols.swift */; };
 		65957BB42B5C5FFA004844FE /* HabitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65957BB32B5C5FFA004844FE /* HabitModel.swift */; };
 		659C88032B723256000FD4F1 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659C88022B723256000FD4F1 /* HomeHeaderView.swift */; };
+		659C882F2B81338D000FD4F1 /* EmojiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 659C882E2B81338D000FD4F1 /* EmojiKit */; };
 		65A8EA852B178D4900FB3C65 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA842B178D4900FB3C65 /* CollectionExtension.swift */; };
 		65A8EA872B1AA65A00FB3C65 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA862B1AA65A00FB3C65 /* ColorExtension.swift */; };
 		65A8EA8B2B1BDB8300FB3C65 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A8EA8A2B1BDB8300FB3C65 /* LaunchScreen.swift */; };
@@ -90,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659C882F2B81338D000FD4F1 /* EmojiKit in Frameworks */,
 				65D1C9A32B40DCC300F5274D /* StoreKit.framework in Frameworks */,
 				65D1C99D2B40BCB900F5274D /* RevenueCatUI in Frameworks */,
 				65D1C99B2B40BCB900F5274D /* RevenueCat in Frameworks */,
@@ -345,6 +347,7 @@
 			packageProductDependencies = (
 				65D1C99A2B40BCB900F5274D /* RevenueCat */,
 				65D1C99C2B40BCB900F5274D /* RevenueCatUI */,
+				659C882E2B81338D000FD4F1 /* EmojiKit */,
 			);
 			productName = HabitWay;
 			productReference = 65EB841B2B0BA20B000D5495 /* HabitWay.app */;
@@ -376,6 +379,7 @@
 			mainGroup = 65EB84122B0BA20B000D5495;
 			packageReferences = (
 				65D1C9992B40BCB900F5274D /* XCRemoteSwiftPackageReference "purchases-ios" */,
+				659C882D2B81338D000FD4F1 /* XCRemoteSwiftPackageReference "EmojiKit" */,
 			);
 			productRefGroup = 65EB841C2B0BA20B000D5495 /* Products */;
 			projectDirPath = "";
@@ -651,6 +655,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		659C882D2B81338D000FD4F1 /* XCRemoteSwiftPackageReference "EmojiKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/niklasamslgruber/EmojiKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		65D1C9992B40BCB900F5274D /* XCRemoteSwiftPackageReference "purchases-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/RevenueCat/purchases-ios.git";
@@ -662,6 +674,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		659C882E2B81338D000FD4F1 /* EmojiKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 659C882D2B81338D000FD4F1 /* XCRemoteSwiftPackageReference "EmojiKit" */;
+			productName = EmojiKit;
+		};
 		65D1C99A2B40BCB900F5274D /* RevenueCat */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 65D1C9992B40BCB900F5274D /* XCRemoteSwiftPackageReference "purchases-ios" */;

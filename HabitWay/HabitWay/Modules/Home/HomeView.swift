@@ -62,7 +62,6 @@ struct HomeView: View {
                  ProgressView("Loading")
              }
         }
-//        .background(Color.backgroundColor)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 HStack {

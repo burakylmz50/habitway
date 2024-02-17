@@ -33,16 +33,13 @@ struct HabitView: View {
                             .fill(.gray.opacity(0.2))
                             .frame(width: 30, height: 30)
                         
-                        Image(systemName: habitModel.icon)
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .imageScale(.large)
+                        Text(habitModel.icon.isEmoji() ? habitModel.icon : "➰")
                             .foregroundStyle(.white)
                     } // Left Button
                     .padding([.leading], 5)
                     
                     VStack(alignment: .leading) {
-                        Text(habitModel.title.uppercased())
+                        Text(habitModel.title)
                             .font(.system(size: 16, weight: .regular))
                             .foregroundStyle(.white)
                         Text(habitModel.subtitle.capitalized)

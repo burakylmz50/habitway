@@ -28,11 +28,7 @@ struct AddHabitView: View {
     @State var viewModel: AddHabitViewModel
     
     private let symbolsColumns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.adaptive(minimum: 40))
     ]
     
     private let colorsColumns = [
@@ -43,14 +39,14 @@ struct AddHabitView: View {
     ]
     
     var colors: [Color] = [
-        .red,
         .green,
+        .teal,
         .blue,
         .orange,
         .purple,
         .yellow,
         .mint,
-        .teal,
+        .red,
         .cyan,
         .indigo,
         .pink,
@@ -83,13 +79,8 @@ struct AddHabitView: View {
                             .frame(width: 100, height: 100)
                             .cornerRadius(20)
                             .overlay(
-                                Image(systemName: selectedIcon != nil ? selectedIcon! : "selection.pin.in.out")
-                                    .resizable()
-                                    .foregroundStyle(selectedColorIndex != nil ? .white : .gray.opacity(0.5))
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 50, height: 50)
-                                    .font(.headline)
-                                
+                                Text(selectedIcon != nil ? selectedIcon! : "➰")
+                                    .font(.largeTitle)
                             )
                             .padding(.top, 30)
                         
@@ -157,73 +148,40 @@ struct AddHabitView: View {
                                     let size = $0.size
                                     
                                     ScrollView {
-                                        LazyVGrid(columns: symbolsColumns, spacing: 10) {
-                                            Section() {
-                                                ForEach(SFSymbols.fitness, id: \.self) { emoji in
-                                                    Rectangle()
-                                                        .frame(width: size.width/6)
-                                                        .background(emoji == selectedIcon ? colors[selectedColorIndex ?? 0] : .gray.opacity(0.1))
-                                                        .overlay {
-                                                            Image(systemName: emoji)
-                                                                .resizable()
-                                                                .foregroundStyle(emoji == selectedIcon ? .white : .gray.opacity(0.5))
-                                                                .aspectRatio(contentMode: .fit)
-                                                                .font(.headline)
-                                                                .padding(12)
-                                                            
-                                                        }
-                                                        .modifier(SymbolsGridStyle())
-                                                        .onTapGesture {
-                                                            selectedIcon = emoji
-                                                            if selectedColorIndex == nil {
-                                                                selectedColorIndex = 0
-                                                            }
-                                                        }
-                                                    
-                                                    
-                                                }
-                                            } header: {
-                                                HStack {
-                                                    Text(SFSymbolsType.fitness.rawValue)
-                                                        .bold()
-                                                    Spacer()
-                                                }
-                                            }
+                                        LazyVGrid(columns: symbolsColumns, spacing: 5) {
                                             
-                                            Section() {
-                                                ForEach(SFSymbols.weather, id: \.self) { emoji in
-                                                    Rectangle()
-                                                        .frame(width: size.width/6)
-                                                        .background(emoji == selectedIcon ? colors[selectedColorIndex ?? 0] : .gray.opacity(0.1))
-                                                        .overlay {
-                                                            Image(systemName: emoji)
-                                                                .resizable()
-                                                                .foregroundStyle(emoji == selectedIcon ? .white : .gray.opacity(0.5))
-                                                                .aspectRatio(contentMode: .fit)
-                                                                .font(.headline)
-                                                                .padding(12)
-                                                            
-                                                        }
-                                                        .onTapGesture {
-                                                            selectedIcon = emoji
-                                                            
-                                                            UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                                                        }
-                                                        .modifier(SymbolsGridStyle())
-                                                    
-                                                }
-                                            } header: {
-                                                HStack {
-                                                    Text(SFSymbolsType.weather.rawValue)
-                                                        .bold()
-                                                    Spacer()
+                                            ForEach(viewModel.emojisByCategory, id: \.name) { emoji in
+                                                
+                                                Section() {
+                                                    ForEach(emoji.values, id: \.self) { value in
+                                                        Rectangle()
+                                                            .frame(width: size.width/8)
+                                                            .background(value == selectedIcon ? colors[selectedColorIndex ?? 0] : .gray.opacity(0.1))
+                                                            .overlay {
+                                                                Text(value)
+                                                                    .aspectRatio(contentMode: .fit)
+                                                                
+                                                            }
+                                                            .modifier(SymbolsGridStyle())
+                                                            .onTapGesture {
+                                                                selectedIcon = value
+                                                                
+                                                                if selectedColorIndex == nil {
+                                                                    selectedColorIndex = 0
+                                                                }
+                                                            }
+                                                    }
+                                                } header: {
+                                                    HStack {
+                                                        Text(emoji.name.rawValue)
+                                                            .bold()
+                                                        Spacer()
+                                                    }
                                                 }
                                             }
                                         }
-                                        .padding(.horizontal)
                                     }
-                                    
-                                    
+                                    .padding(.horizontal)
                                 }
                                 .id(TabModel.symbol)
                                 .containerRelativeFrame(.horizontal)

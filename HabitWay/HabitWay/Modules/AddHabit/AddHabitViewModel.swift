@@ -7,16 +7,20 @@
 
 import SwiftUI
 import Observation
+import EmojiKit
 
 @Observable
 final class AddHabitViewModel {
     
     var habits: [HabitModel] = []
+    var emojisByCategory: [EmojiCategory] = []
     
     private let dataController: DataController
 
     init(dataController: DataController = DataController.shared) {
         self.dataController = dataController
+        
+        getAvailableEmojis()
     }
     
     deinit {
@@ -27,5 +31,9 @@ final class AddHabitViewModel {
         dataController.createHabit(habit: habit)
         
         habits = dataController.fetchHabits()
+    }
+    
+    func getAvailableEmojis() {
+        emojisByCategory = EmojiManager.getAvailableEmojis().reversed()
     }
 }
